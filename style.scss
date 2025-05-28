@@ -17,6 +17,25 @@ $tab-subtitle: #585858;
 $custom-banner-bg: #7301b6;
 $banner-link: #00e6c0;
 $banner-link-hover: #00bfa3;
+$accordion-active-bg: #ede9f7;
+
+// Ready for more ideas row
+$ready-row-bg: $tab-bg;
+$ready-row-radius: 1.5rem;
+$ready-row-gap: 1.5rem;
+$ready-row-padding: 1.5rem;
+$ready-row-text-color: $custom-banner-bg;
+$ready-row-btn-bg: $custom-banner-bg;
+$ready-row-btn-radius: 2rem;
+$ready-row-btn-hover-bg: darken($custom-banner-bg, 20%);
+
+// Add/ensure these at the top with other color variables
+$accordion-item-bg: $tab-bg;
+$accordion-item-shadow: rgba(23, 13, 103, 0.04);
+$accordion-header-color: $tab-title;
+$accordion-border: #e0d7f3;
+$accordion-icon-color: $custom-banner-bg;
+$accordion-body-color: $tab-subtitle;
 
 .parallax-section {
   background-image: url('../image/parallax.jpg');
@@ -157,6 +176,7 @@ footer {
 .tabbed-nav {
   border: none;
   margin-bottom: 2rem;
+  gap: 1rem;
 }
 .tabbed-nav .nav-link {
   border: none;
@@ -181,6 +201,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .tab-image {
   width: 100%;
@@ -188,7 +209,6 @@ footer {
   box-shadow: 0 4px 24px rgba(23, 13, 103, 0.08);
 }
 .tab-arrow {
-  position: absolute;
   bottom: -2.5rem;
   background: $white;
   border: 2px solid $tab-arrow-border;
@@ -203,13 +223,9 @@ footer {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   z-index: 2;
+  margin: 0 !important;
 }
-.tab-arrow.left-arrow {
-  left: 0.5rem;
-}
-.tab-arrow.right-arrow {
-  right: 0.5rem;
-}
+
 .tab-arrow:hover, .tab-arrow:focus {
   background: $tab-arrow-hover-bg;
   color: $tab-arrow-hover-color;
@@ -228,6 +244,11 @@ footer {
   color: $tab-subtitle;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
+}
+.tab-image-wrapper > .d-flex.mt-3 {
+  margin-top: 3.5rem !important;
+  justify-content: center !important;
+  gap: 0.2rem !important;
 }
 @media (max-width: 991.98px) {
   .tabbed-section-inner {
@@ -341,3 +362,202 @@ footer {
   }
 }
 
+// === Circle Image with Overlay Circles ===
+.circle-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.main-circle {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+  .small-circle {
+    pointer-events: auto;
+    border-radius: 50%;
+  }
+}
+
+.small-circle-1 {
+  width: 60px;
+  height: 60px;
+  background: #00e6c0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: rotate(0deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(0deg);
+}
+.small-circle-2 {
+  width: 40px;
+  height: 40px;
+  background: #2e1a85;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: rotate(120deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(-120deg);
+}
+.small-circle-3 {
+  width: 110px;
+  height: 110px;
+  background: #7301b6;
+  position: absolute;
+  left: 80%;
+  top: 40%;
+  transform: rotate(240deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(-240deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7301b6;
+    font-size: 2rem;
+
+    img {
+      width: 50px;
+      height: 50px;
+      display: block;
+    }
+  }
+}
+
+.tab-arrow-container{
+  display: flex;
+  gap: 1rem;
+}
+
+// === Custom Accordion Styles ===
+.accordion {
+  background: transparent;
+  border: none;
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: transparent;
+}
+.accordion-item {
+  background: $accordion-item-bg;
+  border: none;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid $accordion-border;
+  overflow: hidden;
+}
+.accordion-header {
+  margin-bottom: 0;
+}
+.accordion-button {
+  color: $accordion-header-color;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+   background: $white;
+}
+.accordion-button:not(.collapsed) {
+   color: $accordion-header-color;
+  background: $accordion-active-bg;
+}
+.accordion-button:focus {
+  box-shadow: none;
+}
+// Custom plus/minus icon
+.accordion-button::after {
+  content: '+';
+  font-size: 2rem;
+  color: $accordion-header-color;
+  background: none;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+.accordion-button:not(.collapsed)::after {
+  content: '−';
+  color: $accordion-header-color;
+  transform: translateY(-50%) rotate(180deg);
+  background-image: none;
+}
+.accordion-body {
+  background: $white;
+  color: $accordion-body-color;
+  font-size: 1rem;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  border-top: 1px solid $accordion-border;
+}
+
+.ready-for-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $ready-row-gap;
+  margin-top: $ready-row-gap;
+  padding: $ready-row-padding;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  .ready-for-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $ready-row-text-color;
+  }
+  .ready-for-btn {
+    background: $ready-row-btn-bg;
+    color: $white;
+    border-radius: $ready-row-btn-radius;
+    padding: 0.75rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    &:hover, &:focus {
+      background: $ready-row-btn-hover-bg;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

@@ -2,6 +2,32 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   // gsap code here!
+
+  // GSAP orbit animation for bubbles in the first tab (oscillate, not full circle)
+  gsap.to('.orbit-1', {
+    rotate: 30,
+    duration: 2,
+    yoyo: true,
+    repeat: -1,
+    ease: 'sine.inOut',
+    transformOrigin: '50% 50%'
+  });
+  gsap.to('.orbit-2', {
+    rotate: -30,
+    duration: 2.5,
+    yoyo: true,
+    repeat: -1,
+    ease: 'sine.inOut',
+    transformOrigin: '50% 50%'
+  });
+  gsap.to('.orbit-3', {
+    rotate: 20,
+    duration: 3,
+    yoyo: true,
+    repeat: -1,
+    ease: 'sine.inOut',
+    transformOrigin: '50% 50%'
+  });
 });
 
 gsap.from("header .container", { duration: 1, y: -50, opacity: 0, ease: "power2.out" });
@@ -90,3 +116,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// Debounced resize handler to refresh ScrollSmoother and ScrollTrigger
+(function() {
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      if (window.ScrollSmoother && ScrollSmoother.get()) {
+        ScrollSmoother.get().refresh();
+      }
+      if (window.ScrollTrigger) {
+        ScrollTrigger.refresh();
+      }
+    }, 150); // 150ms debounce
+  });
+})();
