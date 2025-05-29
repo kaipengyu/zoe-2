@@ -1,3 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Regular.woff2') format('woff2'),
+       url('./fonts/Diodrum-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-RegularItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Bold.woff2') format('woff2'),
+       url('./fonts/Diodrum-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-BoldItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Semibold.woff2') format('woff2'),
+       url('./fonts/Diodrum-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-SemiboldItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-SemiboldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+// TODO: Import Diodrum font here if available as web font
+
 // Color Variables
 $primary-blue: #0d6efd;
 $white: #fff;
@@ -36,6 +87,17 @@ $accordion-header-color: $tab-title;
 $accordion-border: #e0d7f3;
 $accordion-icon-color: $custom-banner-bg;
 $accordion-body-color: $tab-subtitle;
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.first-headline,
+.banner-headline {
+  font-family: 'Diodrum', Arial, sans-serif;
+}
 
 .parallax-section {
   background-image: url('../image/parallax.jpg');
@@ -137,7 +199,6 @@ footer {
   justify-content: flex-end;
 }
 .hero-title {
-  font-family: 'Diodrum', Arial, sans-serif;
   font-size: 60px;
   font-weight: 400;
   color: $hero-title;
@@ -146,7 +207,6 @@ footer {
   text-align: left;
 }
 .hero-subtitle {
-  font-family: 'Diodrum', Arial, sans-serif;
   font-size: 25px;
   font-weight: 600;
   color: $hero-subtitle;
@@ -262,6 +322,12 @@ footer {
   .tab-image-wrapper {
     max-width: 90vw;
     min-height: 180px;
+  }
+}
+@media (max-width: 575.98px) {
+  .tabbed-nav .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -467,7 +533,6 @@ footer {
 .accordion-item {
   background: $accordion-item-bg;
   border: none;
-  margin-bottom: 0.75rem;
   border-bottom: 1px solid $accordion-border;
   overflow: hidden;
 }
@@ -493,29 +558,22 @@ footer {
 .accordion-button:focus {
   box-shadow: none;
 }
-// Custom plus/minus icon
+// Remove custom plus/minus icon
 .accordion-button::after {
-  content: '+';
-  font-size: 2rem;
-  color: $accordion-header-color;
-  background: none;
-  border: none;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none !important;
+}
+
+// Style for Font Awesome plus/minus icon in accordion
+.accordion-button .accordion-icon {
   position: absolute;
   right: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  transition: transform 0.2s;
-}
-.accordion-button:not(.collapsed)::after {
-  content: '−';
+  font-size: 1.25rem;
   color: $accordion-header-color;
-  transform: translateY(-50%) rotate(180deg);
-  background-image: none;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
 }
 .accordion-body {
   background: $white;
@@ -559,5 +617,52 @@ footer {
       color: $white;
       text-decoration: none;
     }
+  }
+}
+
+// Wrapper for positioning Font Awesome icon in dropdown
+.tab-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.tab-dropdown {
+  background: $tab-bg;
+  border: 2px solid $custom-banner-bg;
+  border-radius: 2rem;
+  color: $tab-title;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(115, 1, 182, 0.07);
+  appearance: none;
+  /* Remove SVG background */
+  background-image: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
+
+  &:focus {
+    border-color: $banner-link;
+    outline: none;
+    box-shadow: 0 0 0 2px $banner-link;
+  }
+}
+
+.tab-dropdown-arrow {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: $custom-banner-bg;
+  font-size: 1.3rem;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .tab-dropdown-wrapper {
+    display: none !important;
   }
 }

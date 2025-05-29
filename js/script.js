@@ -115,6 +115,63 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Dropdown-tab sync for mobile
+  // (Added by AI for mobile tab dropdown)
+  var dropdown = document.getElementById('sectionTabsDropdown');
+  if (!dropdown) return;
+
+  dropdown.addEventListener('change', function () {
+    var tabId = this.value;
+    var tabTrigger = document.querySelector('[data-bs-target="#' + tabId + '"]');
+    if (tabTrigger) {
+      var tab = new bootstrap.Tab(tabTrigger);
+      tab.show();
+    }
+  });
+
+  // Keep dropdown in sync with tab changes (for arrow buttons, etc)
+  var tabButtons = document.querySelectorAll('#sectionTabs button[data-bs-toggle="tab"]');
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('shown.bs.tab', function (e) {
+      dropdown.value = e.target.getAttribute('data-bs-target').replace('#', '');
+    });
+  });
+
+  // Accordion plus/minus icon toggle using Font Awesome
+  document.querySelectorAll('.accordion-button').forEach(function(btn) {
+    // Remove any existing icon
+    let iconSpan = btn.querySelector('.accordion-icon');
+    if (iconSpan) iconSpan.remove();
+    // Add icon span
+    let span = document.createElement('span');
+    span.className = 'accordion-icon';
+    // Set icon based on collapsed state
+    if (btn.classList.contains('collapsed')) {
+      span.innerHTML = '<i class="fa-solid fa-plus"></i>';
+    } else {
+      span.innerHTML = '<i class="fa-solid fa-minus"></i>';
+    }
+    btn.appendChild(span);
+  });
+
+  // Listen for accordion show/hide events to toggle icon
+  document.querySelectorAll('.accordion').forEach(function(acc) {
+    acc.addEventListener('show.bs.collapse', function(e) {
+      let btn = e.target.previousElementSibling.querySelector('.accordion-button');
+      if (btn) {
+        let icon = btn.querySelector('.accordion-icon i');
+        if (icon) icon.className = 'fa-solid fa-minus';
+      }
+    });
+    acc.addEventListener('hide.bs.collapse', function(e) {
+      let btn = e.target.previousElementSibling.querySelector('.accordion-button');
+      if (btn) {
+        let icon = btn.querySelector('.accordion-icon i');
+        if (icon) icon.className = 'fa-solid fa-plus';
+      }
+    });
+  });
 });
 
 // Debounced resize handler to refresh ScrollSmoother and ScrollTrigger

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoe 2.0</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS for parallax and spacing -->
@@ -48,16 +50,27 @@
       <!-- Another Section -->
       <section class="tabbed-section py-5 bg-white" data-speed="1.2">
         <div class="container">
+          <!-- Dropdown for mobile -->
+          <div class="tab-dropdown-wrapper d-block d-md-none mb-3" style="position: relative;">
+            <select class="form-select tab-dropdown" id="sectionTabsDropdown">
+              <option value="tab0">Your Family Room</option>
+              <option value="tab1">Your Kitchen</option>
+              <option value="tab2">Laundry Room</option>
+              <option value="tab3">Your Garage</option>
+              <option value="tab4">Your Basement</option>
+            </select>
+            <span class="tab-dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+
+          <!-- Tabs for desktop -->
+          <ul class="nav nav-tabs justify-content-center tabbed-nav d-none d-md-flex" id="sectionTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="tab0-tab" data-bs-toggle="tab" data-bs-target="#tab0" type="button" role="tab" aria-controls="tab0" aria-selected="true">Your Family Room</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="false">Your Kitchen</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Laundry Room</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Your Garage</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Your Basement</button></li>
+          </ul>
           <div class="tabbed-section-inner row align-items-center">
-            <div class="col-12 mb-4">
-              <ul class="nav nav-tabs justify-content-center tabbed-nav" id="sectionTabs" role="tablist">
-                <li class="nav-item" role="presentation"><button class="nav-link active" id="tab0-tab" data-bs-toggle="tab" data-bs-target="#tab0" type="button" role="tab" aria-controls="tab0" aria-selected="true">Your Family Room</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="false">Your Kitchen</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Laundry Room</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Your Garage</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Your Basement</button></li>
-              </ul>
-            </div>
             <div class="col-12">
               <div class="tab-content tabbed-section-content" id="sectionTabsContent">
                 <div class="tab-pane fade show active" id="tab0" role="tabpanel" aria-labelledby="tab0-tab">
@@ -79,8 +92,8 @@
                           </div>
                         </div>
                         <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Previous tab">&#8592;</button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Next tab">&#8594;</button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -179,7 +192,7 @@
                         <!-- Ready for more ideas row -->
                         <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <span style="font-size: 1.5rem; vertical-align: middle;">&rarr;</span></a>
+                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
                         </div>
                       </div>
                     </div>
@@ -204,8 +217,8 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Previous tab">&#8592;</button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Next tab">&#8594;</button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -304,7 +317,7 @@
                         <!-- Ready for more ideas row -->
                         <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <span style="font-size: 1.5rem; vertical-align: middle;">&rarr;</span></a>
+                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
                         </div>
                       </div>
                     </div>
@@ -329,8 +342,8 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Previous tab">&#8592;</button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Next tab">&#8594;</button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -429,7 +442,7 @@
                         <!-- Ready for more ideas row -->
                         <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <span style="font-size: 1.5rem; vertical-align: middle;">&rarr;</span></a>
+                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
                         </div>
                       </div>
                     </div>
@@ -454,8 +467,8 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Previous tab">&#8592;</button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Next tab">&#8594;</button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -554,7 +567,7 @@
                         <!-- Ready for more ideas row -->
                         <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <span style="font-size: 1.5rem; vertical-align: middle;">&rarr;</span></a>
+                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
                         </div>
                       </div>
                     </div>
@@ -579,8 +592,8 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Previous tab">&#8592;</button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Next tab">&#8594;</button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -679,7 +692,7 @@
                         <!-- Ready for more ideas row -->
                         <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <span style="font-size: 1.5rem; vertical-align: middle;">&rarr;</span></a>
+                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
                         </div>
                       </div>
                     </div>
