@@ -52,7 +52,8 @@
         <div class="container">
           <!-- Dropdown for mobile -->
           <div class="tab-dropdown-wrapper d-block d-md-none mb-3" style="position: relative;">
-            <select class="form-select tab-dropdown" id="sectionTabsDropdown">
+            <label for="sectionTabsDropdown" class="visually-hidden">Select a section</label>
+            <select class="form-select tab-dropdown" id="sectionTabsDropdown" aria-label="Select a section">
               <option value="tab0">Your Family Room</option>
               <option value="tab1">Your Kitchen</option>
               <option value="tab2">Laundry Room</option>
@@ -105,11 +106,11 @@
                         <div class="accordion my-4" id="familyRoomAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="headingOne">
                                 Give your vents some breathing room
                               </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
@@ -117,11 +118,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="headingTwo">
                                 Seal your leaks
                               </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -129,11 +130,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="headingThree">
                                 Get help from the sunshine (or shade)
                               </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -141,11 +142,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" id="headingFour">
                                 Power down after you log off
                               </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -153,11 +154,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" id="headingFive">
                                 Stream the smart way
                               </button>
                             </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -165,11 +166,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" id="headingSix">
                                 Try power management
                               </button>
                             </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -177,11 +178,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" id="headingSeven">
                                 Employ a temperature expert
                               </button>
                             </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#familyRoomAccordion">
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -230,11 +231,11 @@
                         <div class="accordion my-4" id="kitchenAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingOne">
-                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseOne" aria-expanded="true" aria-controls="kitchenCollapseOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseOne" aria-expanded="true" aria-controls="kitchenCollapseOne" id="kitchenHeadingOne">
                                 Give your vents some breathing room
                               </button>
                             </h2>
-                            <div id="kitchenCollapseOne" class="accordion-collapse collapse show" aria-labelledby="kitchenHeadingOne" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseOne" class="accordion-collapse collapse show" aria-labelledby="kitchenHeadingOne" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
@@ -242,11 +243,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseTwo" aria-expanded="false" aria-controls="kitchenCollapseTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseTwo" aria-expanded="false" aria-controls="kitchenCollapseTwo" id="kitchenHeadingTwo">
                                 Seal your leaks
                               </button>
                             </h2>
-                            <div id="kitchenCollapseTwo" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingTwo" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseTwo" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingTwo" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -254,11 +255,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseThree" aria-expanded="false" aria-controls="kitchenCollapseThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseThree" aria-expanded="false" aria-controls="kitchenCollapseThree" id="kitchenHeadingThree">
                                 Get help from the sunshine (or shade)
                               </button>
                             </h2>
-                            <div id="kitchenCollapseThree" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingThree" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseThree" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingThree" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -266,11 +267,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFour" aria-expanded="false" aria-controls="kitchenCollapseFour">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFour" aria-expanded="false" aria-controls="kitchenCollapseFour" id="kitchenHeadingFour">
                                 Power down after you log off
                               </button>
                             </h2>
-                            <div id="kitchenCollapseFour" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFour" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseFour" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFour" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -278,11 +279,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFive" aria-expanded="false" aria-controls="kitchenCollapseFive">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFive" aria-expanded="false" aria-controls="kitchenCollapseFive" id="kitchenHeadingFive">
                                 Stream the smart way
                               </button>
                             </h2>
-                            <div id="kitchenCollapseFive" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFive" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseFive" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFive" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -290,11 +291,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSix" aria-expanded="false" aria-controls="kitchenCollapseSix">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSix" aria-expanded="false" aria-controls="kitchenCollapseSix" id="kitchenHeadingSix">
                                 Try power management
                               </button>
                             </h2>
-                            <div id="kitchenCollapseSix" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSix" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseSix" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSix" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -302,11 +303,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSeven" aria-expanded="false" aria-controls="kitchenCollapseSeven">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSeven" aria-expanded="false" aria-controls="kitchenCollapseSeven" id="kitchenHeadingSeven">
                                 Employ a temperature expert
                               </button>
                             </h2>
-                            <div id="kitchenCollapseSeven" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSeven" data-bs-parent="#kitchenAccordion">
+                            <div id="kitchenCollapseSeven" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSeven" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -355,11 +356,11 @@
                         <div class="accordion my-4" id="laundryAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingOne">
-                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseOne" aria-expanded="true" aria-controls="laundryCollapseOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseOne" aria-expanded="true" aria-controls="laundryCollapseOne" id="laundryHeadingOne">
                                 Give your vents some breathing room
                               </button>
                             </h2>
-                            <div id="laundryCollapseOne" class="accordion-collapse collapse show" aria-labelledby="laundryHeadingOne" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseOne" class="accordion-collapse collapse show" aria-labelledby="laundryHeadingOne" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
@@ -367,11 +368,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseTwo" aria-expanded="false" aria-controls="laundryCollapseTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseTwo" aria-expanded="false" aria-controls="laundryCollapseTwo" id="laundryHeadingTwo">
                                 Seal your leaks
                               </button>
                             </h2>
-                            <div id="laundryCollapseTwo" class="accordion-collapse collapse" aria-labelledby="laundryHeadingTwo" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseTwo" class="accordion-collapse collapse" aria-labelledby="laundryHeadingTwo" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -379,11 +380,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseThree" aria-expanded="false" aria-controls="laundryCollapseThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseThree" aria-expanded="false" aria-controls="laundryCollapseThree" id="laundryHeadingThree">
                                 Get help from the sunshine (or shade)
                               </button>
                             </h2>
-                            <div id="laundryCollapseThree" class="accordion-collapse collapse" aria-labelledby="laundryHeadingThree" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseThree" class="accordion-collapse collapse" aria-labelledby="laundryHeadingThree" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -391,11 +392,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFour" aria-expanded="false" aria-controls="laundryCollapseFour">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFour" aria-expanded="false" aria-controls="laundryCollapseFour" id="laundryHeadingFour">
                                 Power down after you log off
                               </button>
                             </h2>
-                            <div id="laundryCollapseFour" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFour" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseFour" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFour" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -403,11 +404,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFive" aria-expanded="false" aria-controls="laundryCollapseFive">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFive" aria-expanded="false" aria-controls="laundryCollapseFive" id="laundryHeadingFive">
                                 Stream the smart way
                               </button>
                             </h2>
-                            <div id="laundryCollapseFive" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFive" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseFive" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFive" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -415,11 +416,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSix" aria-expanded="false" aria-controls="laundryCollapseSix">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSix" aria-expanded="false" aria-controls="laundryCollapseSix" id="laundryHeadingSix">
                                 Try power management
                               </button>
                             </h2>
-                            <div id="laundryCollapseSix" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSix" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseSix" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSix" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -427,11 +428,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSeven" aria-expanded="false" aria-controls="laundryCollapseSeven">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSeven" aria-expanded="false" aria-controls="laundryCollapseSeven" id="laundryHeadingSeven">
                                 Employ a temperature expert
                               </button>
                             </h2>
-                            <div id="laundryCollapseSeven" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSeven" data-bs-parent="#laundryAccordion">
+                            <div id="laundryCollapseSeven" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSeven" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -480,11 +481,11 @@
                         <div class="accordion my-4" id="garageAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingOne">
-                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseOne" aria-expanded="true" aria-controls="garageCollapseOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseOne" aria-expanded="true" aria-controls="garageCollapseOne" id="garageHeadingOne">
                                 Give your vents some breathing room
                               </button>
                             </h2>
-                            <div id="garageCollapseOne" class="accordion-collapse collapse show" aria-labelledby="garageHeadingOne" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseOne" class="accordion-collapse collapse show" aria-labelledby="garageHeadingOne" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
@@ -492,11 +493,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseTwo" aria-expanded="false" aria-controls="garageCollapseTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseTwo" aria-expanded="false" aria-controls="garageCollapseTwo" id="garageHeadingTwo">
                                 Seal your leaks
                               </button>
                             </h2>
-                            <div id="garageCollapseTwo" class="accordion-collapse collapse" aria-labelledby="garageHeadingTwo" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseTwo" class="accordion-collapse collapse" aria-labelledby="garageHeadingTwo" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -504,11 +505,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseThree" aria-expanded="false" aria-controls="garageCollapseThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseThree" aria-expanded="false" aria-controls="garageCollapseThree" id="garageHeadingThree">
                                 Get help from the sunshine (or shade)
                               </button>
                             </h2>
-                            <div id="garageCollapseThree" class="accordion-collapse collapse" aria-labelledby="garageHeadingThree" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseThree" class="accordion-collapse collapse" aria-labelledby="garageHeadingThree" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -516,11 +517,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFour" aria-expanded="false" aria-controls="garageCollapseFour">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFour" aria-expanded="false" aria-controls="garageCollapseFour" id="garageHeadingFour">
                                 Power down after you log off
                               </button>
                             </h2>
-                            <div id="garageCollapseFour" class="accordion-collapse collapse" aria-labelledby="garageHeadingFour" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseFour" class="accordion-collapse collapse" aria-labelledby="garageHeadingFour" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -528,11 +529,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFive" aria-expanded="false" aria-controls="garageCollapseFive">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFive" aria-expanded="false" aria-controls="garageCollapseFive" id="garageHeadingFive">
                                 Stream the smart way
                               </button>
                             </h2>
-                            <div id="garageCollapseFive" class="accordion-collapse collapse" aria-labelledby="garageHeadingFive" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseFive" class="accordion-collapse collapse" aria-labelledby="garageHeadingFive" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -540,11 +541,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSix" aria-expanded="false" aria-controls="garageCollapseSix">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSix" aria-expanded="false" aria-controls="garageCollapseSix" id="garageHeadingSix">
                                 Try power management
                               </button>
                             </h2>
-                            <div id="garageCollapseSix" class="accordion-collapse collapse" aria-labelledby="garageHeadingSix" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseSix" class="accordion-collapse collapse" aria-labelledby="garageHeadingSix" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -552,11 +553,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSeven" aria-expanded="false" aria-controls="garageCollapseSeven">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSeven" aria-expanded="false" aria-controls="garageCollapseSeven" id="garageHeadingSeven">
                                 Employ a temperature expert
                               </button>
                             </h2>
-                            <div id="garageCollapseSeven" class="accordion-collapse collapse" aria-labelledby="garageHeadingSeven" data-bs-parent="#garageAccordion">
+                            <div id="garageCollapseSeven" class="accordion-collapse collapse" aria-labelledby="garageHeadingSeven" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -605,11 +606,11 @@
                         <div class="accordion my-4" id="basementAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingOne">
-                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseOne" aria-expanded="true" aria-controls="basementCollapseOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseOne" aria-expanded="true" aria-controls="basementCollapseOne" id="basementHeadingOne">
                                 Give your vents some breathing room
                               </button>
                             </h2>
-                            <div id="basementCollapseOne" class="accordion-collapse collapse show" aria-labelledby="basementHeadingOne" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseOne" class="accordion-collapse collapse show" aria-labelledby="basementHeadingOne" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
@@ -617,11 +618,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseTwo" aria-expanded="false" aria-controls="basementCollapseTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseTwo" aria-expanded="false" aria-controls="basementCollapseTwo" id="basementHeadingTwo">
                                 Seal your leaks
                               </button>
                             </h2>
-                            <div id="basementCollapseTwo" class="accordion-collapse collapse" aria-labelledby="basementHeadingTwo" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseTwo" class="accordion-collapse collapse" aria-labelledby="basementHeadingTwo" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -629,11 +630,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseThree" aria-expanded="false" aria-controls="basementCollapseThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseThree" aria-expanded="false" aria-controls="basementCollapseThree" id="basementHeadingThree">
                                 Get help from the sunshine (or shade)
                               </button>
                             </h2>
-                            <div id="basementCollapseThree" class="accordion-collapse collapse" aria-labelledby="basementHeadingThree" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseThree" class="accordion-collapse collapse" aria-labelledby="basementHeadingThree" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -641,11 +642,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFour" aria-expanded="false" aria-controls="basementCollapseFour">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFour" aria-expanded="false" aria-controls="basementCollapseFour" id="basementHeadingFour">
                                 Power down after you log off
                               </button>
                             </h2>
-                            <div id="basementCollapseFour" class="accordion-collapse collapse" aria-labelledby="basementHeadingFour" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseFour" class="accordion-collapse collapse" aria-labelledby="basementHeadingFour" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -653,11 +654,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFive" aria-expanded="false" aria-controls="basementCollapseFive">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFive" aria-expanded="false" aria-controls="basementCollapseFive" id="basementHeadingFive">
                                 Stream the smart way
                               </button>
                             </h2>
-                            <div id="basementCollapseFive" class="accordion-collapse collapse" aria-labelledby="basementHeadingFive" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseFive" class="accordion-collapse collapse" aria-labelledby="basementHeadingFive" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -665,11 +666,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSix" aria-expanded="false" aria-controls="basementCollapseSix">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSix" aria-expanded="false" aria-controls="basementCollapseSix" id="basementHeadingSix">
                                 Try power management
                               </button>
                             </h2>
-                            <div id="basementCollapseSix" class="accordion-collapse collapse" aria-labelledby="basementHeadingSix" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseSix" class="accordion-collapse collapse" aria-labelledby="basementHeadingSix" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>
@@ -677,11 +678,11 @@
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSeven" aria-expanded="false" aria-controls="basementCollapseSeven">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSeven" aria-expanded="false" aria-controls="basementCollapseSeven" id="basementHeadingSeven">
                                 Employ a temperature expert
                               </button>
                             </h2>
-                            <div id="basementCollapseSeven" class="accordion-collapse collapse" aria-labelledby="basementHeadingSeven" data-bs-parent="#basementAccordion">
+                            <div id="basementCollapseSeven" class="accordion-collapse collapse" aria-labelledby="basementHeadingSeven" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
                                 <!-- Add content here if needed -->
                               </div>

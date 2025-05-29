@@ -555,8 +555,17 @@ footer {
    color: $accordion-header-color;
   background: $accordion-active-bg;
 }
-.accordion-button:focus {
-  box-shadow: none;
+.accordion-button:focus,
+.accordion-button.collapsed:focus {
+  background: $custom-banner-bg !important;
+  color: $white !important;
+  outline: none !important;
+  box-shadow: none !important;
+  z-index: 2;
+}
+.accordion-button:focus .accordion-icon,
+.accordion-button.collapsed:focus .accordion-icon {
+  color: $white !important;
 }
 // Remove custom plus/minus icon
 .accordion-button::after {
