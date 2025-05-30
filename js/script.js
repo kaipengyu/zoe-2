@@ -215,7 +215,7 @@ function animateHeroSection() {
 
   if (desktop) {
     // Desktop animation
-    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue.png';
+    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue.svg';
     gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {autoAlpha: 0});
     gsap.set(leftImage, {xPercent: -50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
     gsap.set(leftDialogue, {xPercent: -50, left: '70%', right: 'auto', position: 'absolute', zIndex: 3});
@@ -244,7 +244,7 @@ function animateHeroSection() {
       .to(zoeDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '-=0.2');
   } else {
     // Mobile animation
-    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue-mobile.png';
+    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue-mobile.svg';
     gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {autoAlpha: 0});
     gsap.set(leftImage, {xPercent: -50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
     gsap.set(leftDialogue, {xPercent: -50, left: '70%', right: 'auto', position: 'absolute', zIndex: 3});
