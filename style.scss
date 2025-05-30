@@ -162,6 +162,12 @@ footer {
   max-width:45%;
   min-width: 260px;
   z-index: 2;
+
+   @media (max-width:991px) {
+    width: 100%;
+    max-width: 100%;
+    max-width: 700px;
+  }
 }
 .hero-bubble-left {
   position: absolute;
@@ -171,6 +177,9 @@ footer {
   min-width: 220px;
   max-width: 25%;
   z-index: 3;
+
+
+
 }
 .hero-zoe {
   position: absolute;
@@ -180,6 +189,12 @@ footer {
   max-width: 35%;
   min-width: 200px;
   z-index: 2;
+
+  @media (max-width:991px) {
+    width: 80%;
+    max-width: 80%;
+    max-width: 500px;
+  }
 }
 .hero-bubble-right {
   position: absolute;
@@ -189,6 +204,12 @@ footer {
   min-width: 220px;
   max-width: 28%;
   z-index: 3;
+
+  @media (max-width:991px) {
+   bottom: 60%;
+   width: 40%;
+   max-width: 40%;
+  }
 }
 .hero-content {
   position: relative;
@@ -601,7 +622,7 @@ footer {
   gap: $ready-row-gap;
   margin-top: $ready-row-gap;
   padding: $ready-row-padding;
-  @media (min-width: 768px) {
+  @media (min-width: 991px) {
     flex-direction: row;
   }
   .ready-for-text {
@@ -670,7 +691,7 @@ footer {
   z-index: 3;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   .tab-dropdown-wrapper {
     display: none !important;
   }

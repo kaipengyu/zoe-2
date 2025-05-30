@@ -189,3 +189,102 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 150); // 150ms debounce
   });
 })();
+
+// === HERO SECTION ANIMATION (GSAP) ===
+let lastHeroMode = null; // Track last mode: 'desktop' or 'mobile'
+let heroTimeline = null; // Store timeline to kill on mode change
+function animateHeroSection() {
+  // Elements
+  const leftImage = document.getElementById('heroLeftImage');
+  const leftDialogue = document.getElementById('heroLeftDialogue');
+  const zoeImage = document.getElementById('heroZoeImage');
+  const zoeDialogue = document.getElementById('heroZoeDialogue');
+  const heroRow = document.querySelector('.hero-bottom-row');
+
+  // Detect mode
+  const desktop = window.matchMedia('(min-width: 991px)').matches;
+  const mode = desktop ? 'desktop' : 'mobile';
+  if (lastHeroMode === mode) return; // Only animate if mode changes
+  lastHeroMode = mode;
+
+  // Kill previous timeline if exists
+  if (heroTimeline) heroTimeline.kill();
+
+  // Reset all
+  gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {clearProps: 'all'});
+
+  if (desktop) {
+    // Desktop animation
+    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue.png';
+    gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {autoAlpha: 0});
+    gsap.set(leftImage, {xPercent: -50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
+    gsap.set(leftDialogue, {xPercent: -50, left: '70%', right: 'auto', position: 'absolute', zIndex: 3});
+    gsap.set(zoeImage, {right: 0, left: 'auto', position: 'absolute', zIndex: 2});
+    gsap.set(zoeDialogue, {right: '25%', left: 'auto', position: 'absolute', zIndex: 3});
+
+    heroTimeline = gsap.timeline();
+    heroTimeline.to(leftImage, {autoAlpha: 1, duration: 0.6, ease: 'power2.out'})
+      .to(leftDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '+=0.2')
+      .to(leftImage, {
+        xPercent: 0,
+        left: 0,
+        duration: 0.7,
+        ease: 'power2.inOut',
+        stagger: 0.05
+      })
+      .to(leftDialogue, {
+        xPercent: 0,
+        left: '30%',
+        duration: 0.7,
+        ease: 'power2.inOut',
+        stagger: 0.05
+      }, '<')
+      .to(zoeImage, {autoAlpha: 1, x: 60, duration: 0.7, ease: 'power2.out'}, '-=0.3')
+      .to(zoeImage, {x: 0, duration: 0.4, ease: 'power2.inOut'}, '-=0.2')
+      .to(zoeDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '-=0.2');
+  } else {
+    // Mobile animation
+    if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue-mobile.png';
+    gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {autoAlpha: 0});
+    gsap.set(leftImage, {xPercent: -50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
+    gsap.set(leftDialogue, {xPercent: -50, left: '70%', right: 'auto', position: 'absolute', zIndex: 3});
+    gsap.set(zoeImage, {xPercent: 50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
+    gsap.set(zoeDialogue, {xPercent: 50, left: 0, right: 'auto', position: 'absolute', zIndex: 3});
+
+    heroTimeline = gsap.timeline();
+    heroTimeline.to(leftImage, {autoAlpha: 1, duration: 0.6, ease: 'power2.out'})
+      .to(leftDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '+=0.2')
+      .to([leftImage, leftDialogue], {
+        x: '-60vw',
+        autoAlpha: 0,
+        duration: 0.7,
+        ease: 'power2.inOut',
+        stagger: 0.05
+      })
+      .to(zoeImage, {
+        autoAlpha: 1,
+        xPercent: -50,
+        x: 0,
+        duration: 0.7,
+        left: '60%',
+        ease: 'power2.out',
+        stagger: 0.1
+      }, '-=0.3')
+       .to(zoeDialogue, {
+        autoAlpha: 1,
+        xPercent: 0,
+        x: 0,
+        duration: 0.7,
+        left: '0%',
+        ease: 'power2.out',
+        stagger: 0.1
+      }, '-=0.3');
+  }
+}
+
+// Run on load
+animateHeroSection();
+// Re-run on resize/orientation change
+window.addEventListener('resize', () => {
+  animateHeroSection();
+});
