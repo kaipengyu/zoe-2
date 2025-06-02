@@ -193,6 +193,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // === HERO SECTION ANIMATION (GSAP) ===
 let lastHeroMode = null; // Track last mode: 'desktop' or 'mobile'
 let heroTimeline = null; // Store timeline to kill on mode change
+let heroAnimPaused = false; // Track pause state
+let heroAnimCompleted = false; // Track if animation completed
+
 function animateHeroSection() {
   // Elements
   const leftImage = document.getElementById('heroLeftImage');
@@ -200,6 +203,7 @@ function animateHeroSection() {
   const zoeImage = document.getElementById('heroZoeImage');
   const zoeDialogue = document.getElementById('heroZoeDialogue');
   const heroRow = document.querySelector('.hero-bottom-row');
+  const animControlBtn = document.getElementById('heroAnimControlBtn');
 
   // Detect mode
   const desktop = window.matchMedia('(min-width: 991px)').matches;
@@ -212,6 +216,15 @@ function animateHeroSection() {
 
   // Reset all
   gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {clearProps: 'all'});
+
+  // Reset control state
+  heroAnimPaused = false;
+  heroAnimCompleted = false;
+  if (animControlBtn) {
+    animControlBtn.textContent = 'Pause Animation';
+    animControlBtn.disabled = false;
+    animControlBtn.style.display = desktop ? 'none' : 'inline-block';
+  }
 
   if (desktop) {
     // Desktop animation
@@ -251,7 +264,15 @@ function animateHeroSection() {
     gsap.set(zoeImage, {xPercent: 50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
     gsap.set(zoeDialogue, {xPercent: 50, left: 0, right: 'auto', position: 'absolute', zIndex: 3});
 
-    heroTimeline = gsap.timeline();
+    heroTimeline = gsap.timeline({
+      onComplete: function() {
+        heroAnimCompleted = true;
+        if (animControlBtn) {
+          animControlBtn.textContent = 'Replay Animation';
+          animControlBtn.disabled = false;
+        }
+      }
+    });
     heroTimeline.to(leftImage, {autoAlpha: 1, duration: 0.6, ease: 'power2.out'})
       .to(leftDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '+=0.2')
       .to([leftImage, leftDialogue], {
@@ -279,6 +300,28 @@ function animateHeroSection() {
         ease: 'power2.out',
         stagger: 0.1
       }, '-=0.3');
+  }
+
+  // Button logic (mobile only)
+  if (animControlBtn && !desktop) {
+    animControlBtn.onclick = function() {
+      if (heroAnimCompleted) {
+        // Replay
+        heroTimeline.restart();
+        heroAnimCompleted = false;
+        animControlBtn.textContent = 'Pause Animation';
+      } else if (!heroAnimPaused) {
+        // Pause
+        heroTimeline.pause();
+        heroAnimPaused = true;
+        animControlBtn.textContent = 'Resume Animation';
+      } else {
+        // Resume
+        heroTimeline.play();
+        heroAnimPaused = false;
+        animControlBtn.textContent = 'Pause Animation';
+      }
+    };
   }
 }
 
