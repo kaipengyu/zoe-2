@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
   <div class="smooth-wrapper">
     <div class="smooth-content">
       <!-- Hero Section -->
@@ -27,44 +30,54 @@
         </div>
         <!-- Mobile Animation Control Button -->
         <div class="d-block d-lg-none text-center">
-          <button id="heroAnimControlBtn" class="btn btn-primary">Pause Animation</button>
+          <button id="heroAnimControlBtn" class="ready-for-btn small">Pause Animation</button>
         </div>
       </header>
 
       <!-- First Section -->
       <section class="py-5 bg-white first-section" data-speed="0.8">
         <div class="container">
-          <h2 class="first-headline text-center text-lg-start pt-4">Explore simple cost-saving programs that can put energy efficiency within reach.</h2>
+          <h2 class="first-headline text-center text-lg-start pt-4">Explore simple cost-saving tips and programs that can put energy efficiency within reach.</h2>
           <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
-              <p class="first-subheadline">These days, it feels harder and harder to keep up, let alone get ahead. That's why we're here: to help make saving energy easier with simple programs made for real life.</p>
-              <p class="first-highlight">The best part? These aren't just quick fixes.<br>They're habit-forming.</p>
+              <p class="first-subheadline">These days, it may feel harder and harder to keep up, let alone get ahead. That's why we're here: to help make saving energy easier with simple programs made for everyday life. </p>
+              <p class="first-highlight">The best part? Although these are quick <br/>fixes, the results are everlasting.</p>
             </div>
             <div class="col-lg-5 text-center">
-              <img src="image/first-section.svg" alt="Cost-saving illustration" class="img-fluid first-section-img" />
+              <div class="gauge-wrapper" style="position: relative;">
+                <div id="gauge-pointer-lottie" style="width: 300px; height: 300px; margin: 0 auto;"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Parallax Image Section -->
-      <section class="parallax-section" data-speed="0.5">
+      <section class="parallax-section" data-speed="0.7">
+        <div class="container position-relative" style="height: 400px;">
+          <img src="image/parallax.png" alt="Parallax" class="parallax-img"  />
+          <img src="image/parallal-dialogue.svg" alt="Parallax" class="parallax-img-2" />
+        </div>
       </section>
 
       <!-- Another Section -->
-      <section class="tabbed-section py-5 bg-white" data-speed="1.2">
+      <section class="tabbed-section py-3 pb-5 bg-white" data-speed="1.2">
         <div class="container">
           <!-- Dropdown for mobile -->
           <div class="tab-dropdown-wrapper d-block d-md-none mb-3" style="position: relative;">
-            <label for="sectionTabsDropdown" class="visually-hidden">Select a section</label>
-            <select class="form-select tab-dropdown" id="sectionTabsDropdown" aria-label="Select a section">
-              <option value="tab0">Your Family Room</option>
-              <option value="tab1">Your Kitchen</option>
-              <option value="tab2">Laundry Room</option>
-              <option value="tab3">Your Garage</option>
-              <option value="tab4">Your Basement</option>
-            </select>
-            <span class="tab-dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            <div class="dropdown custom-dropdown w-100">
+              <button class="btn dropdown-toggle custom-dropdown-selected w-100" type="button" id="roomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="dropdown-btn-text">Your Family Room</span>
+                <span class="tab-dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+              </button>
+              <ul class="dropdown-menu custom-dropdown-list w-100" aria-labelledby="roomDropdown">
+                <li><a class="dropdown-item active" href="#" data-tab="tab0">Your Family Room</a></li>
+                <li><a class="dropdown-item" href="#" data-tab="tab1">Your Kitchen</a></li>
+                <li><a class="dropdown-item" href="#" data-tab="tab2">Laundry Room</a></li>
+                <li><a class="dropdown-item" href="#" data-tab="tab3">Your Garage</a></li>
+                <li><a class="dropdown-item" href="#" data-tab="tab4">Your Basement</a></li>
+              </ul>
+            </div>
           </div>
 
           <!-- Tabs for desktop -->
@@ -97,26 +110,35 @@
                           </div>
                         </div>
                         <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-chevron-left"></i></button>
+                          <!-- Dot indicators for mobile -->
+                          <div class="tab-dot-indicators d-flex justify-content-center align-items-center d-md-none mx-2">
+                            <span class="dot active" data-bs-target="#tab0" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab1" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab2" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab3" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab4" data-bs-toggle="tab"></span>
+                          </div>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-7">
                       <div class="tab-content-area">
-                        <h2 class="tab-title">Your Family Room</h2>
+                        <h2 class="tab-subtitle-small">Your Family Room</h2>
+                        <h3 class="tab-title">The hangout zone</h3>
                         <p class="tab-subtitle">It's where relaxation rules, but energy use can sneak up on you if you're not careful.</p>
                         <!-- Accordion Start -->
                         <div class="accordion my-4" id="familyRoomAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="headingOne">
-                                Give your vents some breathing room
+                               Give your vents some breathing room
                               </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
+                               If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
                               </div>
                             </div>
                           </div>
@@ -128,7 +150,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Drafts around windows and doors can drive up your energy bill.
                               </div>
                             </div>
                           </div>
@@ -140,7 +162,7 @@
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                                On warm days, close your curtains during the day to keep out the sun’s warmth. On cold days, open them.
                               </div>
                             </div>
                           </div>
@@ -152,7 +174,7 @@
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                                When you're not using your computer or other electronics, turn them off.
                               </div>
                             </div>
                           </div>
@@ -164,7 +186,7 @@
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Watching your shows on a game console uses up to 10 times more energy than a laptop or tablet.*
                               </div>
                             </div>
                           </div>
@@ -176,7 +198,7 @@
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                                Get instant rebates on <a href="https://secure.delmarva.com/marketplace/category/dpl_advanced_power_solutions" target="_blank">advanced power strips</a> to keep your electronics from pulling power when you're not using them.
                               </div>
                             </div>
                           </div>
@@ -188,17 +210,17 @@
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" role="region" data-bs-parent="#familyRoomAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               <a href="https://homeenergysavings.delmarva.com/md/residential/appliance-rebate-program/overview/smart-thermostats" target="_blank">Grab up to $100 in rebates</a> on smart thermostats, which can learn your habits, optimize heating and cooling, and make adjustments automatically—even when you're not there.
                               </div>
                             </div>
                           </div>
                         </div>
                         <!-- Accordion End -->
                         <!-- Ready for more ideas row -->
-                        <div class="ready-for-row">
+                        <!-- <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
-                        </div>
+                          <a href="https://www.delmarva.com/ways-to-save/for-your-home/maryland" class="ready-for-btn" target="_blank">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -222,108 +244,84 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-chevron-left"></i></button>
+                          <!-- Dot indicators for mobile -->
+                          <div class="tab-dot-indicators d-flex justify-content-center align-items-center d-md-none mx-2">
+                            <span class="dot" data-bs-target="#tab0" data-bs-toggle="tab"></span>
+                            <span class="dot active" data-bs-target="#tab1" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab2" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab3" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab4" data-bs-toggle="tab"></span>
+                          </div>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-7">
                       <div class="tab-content-area">
-                        <h2 class="tab-title">Your Kitchen</h2>
-                        <p class="tab-subtitle">The heart of the home, and a hotspot for energy use.</p>
+                        <h2 class="tab-subtitle-small">Your Kitchen</h2>
+                        <h3 class="tab-title">The heart of your home</h3>
+                        <p class="tab-subtitle">It's where the family tends to gather, along with lots of energy use, from the refrigerator to the dishwasher.</p>
                         <!-- Accordion Start -->
                         <div class="accordion my-4" id="kitchenAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingOne">
                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseOne" aria-expanded="true" aria-controls="kitchenCollapseOne" id="kitchenHeadingOne">
-                                Give your vents some breathing room
+                                Give your refrigerator some love
                               </button>
                             </h2>
                             <div id="kitchenCollapseOne" class="accordion-collapse collapse show" aria-labelledby="kitchenHeadingOne" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
-                                If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
+                               Every few months, vacuum the dust off your refrigerator's condenser coils. (They're usually hiding on the back or underneath.)
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingTwo">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseTwo" aria-expanded="false" aria-controls="kitchenCollapseTwo" id="kitchenHeadingTwo">
-                                Seal your leaks
+                                Seal your refrigerator
                               </button>
                             </h2>
                             <div id="kitchenCollapseTwo" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingTwo" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Open the door and check the rubber gaskets. If they're cracked or not sealing tightly, cold air could be sneaking out.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingThree">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseThree" aria-expanded="false" aria-controls="kitchenCollapseThree" id="kitchenHeadingThree">
-                                Get help from the sunshine (or shade)
+                               Wait for a full load of dishes
                               </button>
                             </h2>
                             <div id="kitchenCollapseThree" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingThree" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                                Running your dishwasher half-full? Hold off until it's packed so it can do its thing all at once.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="kitchenHeadingFour">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFour" aria-expanded="false" aria-controls="kitchenCollapseFour" id="kitchenHeadingFour">
-                                Power down after you log off
+                              Call in the energy experts
                               </button>
                             </h2>
                             <div id="kitchenCollapseFour" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFour" role="region" data-bs-parent="#kitchenAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Request a <a href="https://homeenergysavings.delmarva.com/md/residential/quick-home-energy-check-up-program" target="_blank">Quick Home Energy Check-Up</a>, and you'll get a custom energy efficiency report and maybe some no-cost products, too.
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="kitchenHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseFive" aria-expanded="false" aria-controls="kitchenCollapseFive" id="kitchenHeadingFive">
-                                Stream the smart way
-                              </button>
-                            </h2>
-                            <div id="kitchenCollapseFive" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingFive" role="region" data-bs-parent="#kitchenAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="kitchenHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSix" aria-expanded="false" aria-controls="kitchenCollapseSix" id="kitchenHeadingSix">
-                                Try power management
-                              </button>
-                            </h2>
-                            <div id="kitchenCollapseSix" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSix" role="region" data-bs-parent="#kitchenAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="kitchenHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenCollapseSeven" aria-expanded="false" aria-controls="kitchenCollapseSeven" id="kitchenHeadingSeven">
-                                Employ a temperature expert
-                              </button>
-                            </h2>
-                            <div id="kitchenCollapseSeven" class="accordion-collapse collapse" aria-labelledby="kitchenHeadingSeven" role="region" data-bs-parent="#kitchenAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
+                         
+                        
+                         
                         </div>
                         <!-- Accordion End -->
                         <!-- Ready for more ideas row -->
-                        <div class="ready-for-row">
+                        <!-- <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
-                        </div>
+                          <a href="https://www.delmarva.com/ways-to-save/for-your-home/maryland" class="ready-for-btn" target="_blank">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -347,108 +345,84 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab1" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-chevron-left"></i></button>
+                          <!-- Dot indicators for mobile -->
+                          <div class="tab-dot-indicators d-flex justify-content-center align-items-center d-md-none mx-2">
+                            <span class="dot" data-bs-target="#tab0" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab1" data-bs-toggle="tab"></span>
+                            <span class="dot active" data-bs-target="#tab2" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab3" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab4" data-bs-toggle="tab"></span>
+                          </div>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-7">
                       <div class="tab-content-area">
-                        <h2 class="tab-title">Laundry Room</h2>
-                        <p class="tab-subtitle">Keep your clothes clean and your energy bills low.</p>
+                        <h2 class="tab-subtitle-small">Laundry Room</h2>
+                        <h3 class="tab-title">Where socks go to disappear</h3>
+                        <p class="tab-subtitle">It's where the laundry gets done, but a few smart moves here can clean up your energy use, too.</p>
                         <!-- Accordion Start -->
                         <div class="accordion my-4" id="laundryAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingOne">
                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseOne" aria-expanded="true" aria-controls="laundryCollapseOne" id="laundryHeadingOne">
-                                Give your vents some breathing room
+                               Don't over-dry your clothes
                               </button>
                             </h2>
                             <div id="laundryCollapseOne" class="accordion-collapse collapse show" aria-labelledby="laundryHeadingOne" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
-                                If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
+                             If your dryer has a moisture sensor, use it! It'll stop the cycle when things are dry.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingTwo">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseTwo" aria-expanded="false" aria-controls="laundryCollapseTwo" id="laundryHeadingTwo">
-                                Seal your leaks
+                               Clean the lint trap
                               </button>
                             </h2>
                             <div id="laundryCollapseTwo" class="accordion-collapse collapse" aria-labelledby="laundryHeadingTwo" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                             It helps your dryer run more efficiently and reduces the risk of a fire. Win-win.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingThree">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseThree" aria-expanded="false" aria-controls="laundryCollapseThree" id="laundryHeadingThree">
-                                Get help from the sunshine (or shade)
+                              Full loads = full savings
                               </button>
                             </h2>
                             <div id="laundryCollapseThree" class="accordion-collapse collapse" aria-labelledby="laundryHeadingThree" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Try to dry full loads of laundry, but if you must run a partial one, reduce the drying time.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="laundryHeadingFour">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFour" aria-expanded="false" aria-controls="laundryCollapseFour" id="laundryHeadingFour">
-                                Power down after you log off
+                             Manage your energy with efficient appliances
                               </button>
                             </h2>
                             <div id="laundryCollapseFour" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFour" role="region" data-bs-parent="#laundryAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                              <a href="https://homeenergysavings.delmarva.com/md/residential/appliance-rebate-program/washers-discounts" target="_blank">Instant discounts of $100 on ENERGY STAR certified clothes washers</a> can make it easier.</a>
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="laundryHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseFive" aria-expanded="false" aria-controls="laundryCollapseFive" id="laundryHeadingFive">
-                                Stream the smart way
-                              </button>
-                            </h2>
-                            <div id="laundryCollapseFive" class="accordion-collapse collapse" aria-labelledby="laundryHeadingFive" role="region" data-bs-parent="#laundryAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="laundryHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSix" aria-expanded="false" aria-controls="laundryCollapseSix" id="laundryHeadingSix">
-                                Try power management
-                              </button>
-                            </h2>
-                            <div id="laundryCollapseSix" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSix" role="region" data-bs-parent="#laundryAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="laundryHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#laundryCollapseSeven" aria-expanded="false" aria-controls="laundryCollapseSeven" id="laundryHeadingSeven">
-                                Employ a temperature expert
-                              </button>
-                            </h2>
-                            <div id="laundryCollapseSeven" class="accordion-collapse collapse" aria-labelledby="laundryHeadingSeven" role="region" data-bs-parent="#laundryAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
+                          
+                         
+                       
                         </div>
                         <!-- Accordion End -->
                         <!-- Ready for more ideas row -->
-                        <div class="ready-for-row">
+                        <!-- <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
-                        </div>
+                          <a href="https://www.delmarva.com/ways-to-save/for-your-home/maryland" class="ready-for-btn" target="_blank">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -472,108 +446,74 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab2" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-chevron-left"></i></button>
+                          <!-- Dot indicators for mobile -->
+                          <div class="tab-dot-indicators d-flex justify-content-center align-items-center d-md-none mx-2">
+                            <span class="dot" data-bs-target="#tab0" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab1" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab2" data-bs-toggle="tab"></span>
+                            <span class="dot active" data-bs-target="#tab3" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab4" data-bs-toggle="tab"></span>
+                          </div>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab4" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-7">
                       <div class="tab-content-area">
-                        <h2 class="tab-title">Your Garage</h2>
-                        <p class="tab-subtitle">A place for storage, projects, and sometimes wasted energy.</p>
+                        <h2 class="tab-subtitle-small">Your Garage</h2>
+                        <h3 class="tab-title">The overflow zone</h3>
+                        <p class="tab-subtitle">It's where tools, gear, and even an extra refrigerator live, but it's also a space where energy efficiency can easily be overlooked.</p>
                         <!-- Accordion Start -->
                         <div class="accordion my-4" id="garageAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingOne">
                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseOne" aria-expanded="true" aria-controls="garageCollapseOne" id="garageHeadingOne">
-                                Give your vents some breathing room
+                                Keep that overhead garage door closed
                               </button>
                             </h2>
                             <div id="garageCollapseOne" class="accordion-collapse collapse show" aria-labelledby="garageHeadingOne" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
-                                If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
+                                Shutting it helps keep the heat or cold from sneaking into your home.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingTwo">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseTwo" aria-expanded="false" aria-controls="garageCollapseTwo" id="garageHeadingTwo">
-                                Seal your leaks
+                                Skip the garage refrigerator
                               </button>
                             </h2>
                             <div id="garageCollapseTwo" class="accordion-collapse collapse" aria-labelledby="garageHeadingTwo" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                             Got an extra refrigerator out there? It might be working overtime in the summer.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="garageHeadingThree">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseThree" aria-expanded="false" aria-controls="garageCollapseThree" id="garageHeadingThree">
-                                Get help from the sunshine (or shade)
+                              Even better, recycle it. 
                               </button>
                             </h2>
                             <div id="garageCollapseThree" class="accordion-collapse collapse" aria-labelledby="garageHeadingThree" role="region" data-bs-parent="#garageAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Speaking of which, that outdated second refrigerator could cost you $80 or more every year to run. The good news? 
+                               <a href="https://homeenergysavings.delmarva.com/md/residential/appliance-recycling-program" target="_blank">Recycling it is easy</a>.
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="garageHeadingFour">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFour" aria-expanded="false" aria-controls="garageCollapseFour" id="garageHeadingFour">
-                                Power down after you log off
-                              </button>
-                            </h2>
-                            <div id="garageCollapseFour" class="accordion-collapse collapse" aria-labelledby="garageHeadingFour" role="region" data-bs-parent="#garageAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="garageHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseFive" aria-expanded="false" aria-controls="garageCollapseFive" id="garageHeadingFive">
-                                Stream the smart way
-                              </button>
-                            </h2>
-                            <div id="garageCollapseFive" class="accordion-collapse collapse" aria-labelledby="garageHeadingFive" role="region" data-bs-parent="#garageAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="garageHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSix" aria-expanded="false" aria-controls="garageCollapseSix" id="garageHeadingSix">
-                                Try power management
-                              </button>
-                            </h2>
-                            <div id="garageCollapseSix" class="accordion-collapse collapse" aria-labelledby="garageHeadingSix" role="region" data-bs-parent="#garageAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="garageHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#garageCollapseSeven" aria-expanded="false" aria-controls="garageCollapseSeven" id="garageHeadingSeven">
-                                Employ a temperature expert
-                              </button>
-                            </h2>
-                            <div id="garageCollapseSeven" class="accordion-collapse collapse" aria-labelledby="garageHeadingSeven" role="region" data-bs-parent="#garageAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
+                         
+                        
+                        
+                        
                         </div>
                         <!-- Accordion End -->
                         <!-- Ready for more ideas row -->
-                        <div class="ready-for-row">
+                        <!-- <div class="ready-for-row">
                           <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
-                        </div>
+                          <a href="https://www.delmarva.com/ways-to-save/for-your-home/maryland" class="ready-for-btn" target="_blank">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -597,108 +537,82 @@
                           </div>
                         </div>
                          <div class="tab-arrow-container">
-                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-arrow-left"></i></button>
-                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="tab-arrow left-arrow btn btn-light" data-bs-target="#tab3" data-bs-toggle="tab" aria-label="Previous tab"><i class="fa-solid fa-chevron-left"></i></button>
+                          <!-- Dot indicators for mobile -->
+                          <div class="tab-dot-indicators d-flex justify-content-center align-items-center d-md-none mx-2">
+                            <span class="dot" data-bs-target="#tab0" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab1" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab2" data-bs-toggle="tab"></span>
+                            <span class="dot" data-bs-target="#tab3" data-bs-toggle="tab"></span>
+                            <span class="dot active" data-bs-target="#tab4" data-bs-toggle="tab"></span>
+                          </div>
+                          <button class="tab-arrow right-arrow btn btn-light" data-bs-target="#tab0" data-bs-toggle="tab" aria-label="Next tab"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-7">
                       <div class="tab-content-area">
-                        <h2 class="tab-title">Your Basement</h2>
-                        <p class="tab-subtitle">Cool, comfortable, and energy efficient.</p>
+                        <h2 class="tab-subtitle-small">Your Basement</h2>
+                        <h3 class="tab-title">Behind-the-scenes HQ</h3>
+                        <p class="tab-subtitle">It's where your furnace and water heater quietly do their thing, which makes it a hidden hot spot for energy savings.</p>
                         <!-- Accordion Start -->
                         <div class="accordion my-4" id="basementAccordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingOne">
                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseOne" aria-expanded="true" aria-controls="basementCollapseOne" id="basementHeadingOne">
-                                Give your vents some breathing room
+                               Check your furnace filter monthly
                               </button>
                             </h2>
                             <div id="basementCollapseOne" class="accordion-collapse collapse show" aria-labelledby="basementHeadingOne" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
-                                If furniture or curtains are blocking your HVAC vents, your system has to work harder, and that means wasted energy.
+                               A dirty filter makes your heating system work harder than it should.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingTwo">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseTwo" aria-expanded="false" aria-controls="basementCollapseTwo" id="basementHeadingTwo">
-                                Seal your leaks
+                                Turn down the water heater
                               </button>
                             </h2>
                             <div id="basementCollapseTwo" class="accordion-collapse collapse" aria-labelledby="basementHeadingTwo" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               Setting your water heater to 120 degrees should be hot enough for showers and washing.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingThree">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseThree" aria-expanded="false" aria-controls="basementCollapseThree" id="basementHeadingThree">
-                                Get help from the sunshine (or shade)
+                               Time to replace your water heater?
                               </button>
                             </h2>
                             <div id="basementCollapseThree" class="accordion-collapse collapse" aria-labelledby="basementHeadingThree" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               It's easy with <a href="https://homeenergysavings.delmarva.com/md/residential/appliance-rebate-program" target="_blank">$1,600 rebates on ENERGY STAR<sup>®</sup> certified heat pump water heaters</a>.
                               </div>
                             </div>
                           </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="basementHeadingFour">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFour" aria-expanded="false" aria-controls="basementCollapseFour" id="basementHeadingFour">
-                                Power down after you log off
+                               Is your HVAC system struggling to keep up? 
                               </button>
                             </h2>
                             <div id="basementCollapseFour" class="accordion-collapse collapse" aria-labelledby="basementHeadingFour" role="region" data-bs-parent="#basementAccordion">
                               <div class="accordion-body">
-                                <!-- Add content here if needed -->
+                               That could mean higher costs. <a href="https://homeenergysavings.delmarva.com/md/residential/hvac-efficiency-program/overview" target="_blank">A no-cost HVAC Tune-up</a> can have your system running smoothly in no time.
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="basementHeadingFive">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseFive" aria-expanded="false" aria-controls="basementCollapseFive" id="basementHeadingFive">
-                                Stream the smart way
-                              </button>
-                            </h2>
-                            <div id="basementCollapseFive" class="accordion-collapse collapse" aria-labelledby="basementHeadingFive" role="region" data-bs-parent="#basementAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="basementHeadingSix">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSix" aria-expanded="false" aria-controls="basementCollapseSix" id="basementHeadingSix">
-                                Try power management
-                              </button>
-                            </h2>
-                            <div id="basementCollapseSix" class="accordion-collapse collapse" aria-labelledby="basementHeadingSix" role="region" data-bs-parent="#basementAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="basementHeadingSeven">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basementCollapseSeven" aria-expanded="false" aria-controls="basementCollapseSeven" id="basementHeadingSeven">
-                                Employ a temperature expert
-                              </button>
-                            </h2>
-                            <div id="basementCollapseSeven" class="accordion-collapse collapse" aria-labelledby="basementHeadingSeven" role="region" data-bs-parent="#basementAccordion">
-                              <div class="accordion-body">
-                                <!-- Add content here if needed -->
-                              </div>
-                            </div>
-                          </div>
+                      
+                         
+                        
+                         
                         </div>
                         <!-- Accordion End -->
                         <!-- Ready for more ideas row -->
-                        <div class="ready-for-row">
-                          <span class="ready-for-text">Ready for more ideas?</span>
-                          <a href="#" class="ready-for-btn">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
-                        </div>
+                       
                       </div>
                     </div>
                   </div>
@@ -714,7 +628,10 @@
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between position-relative">
           <div class="banner-text text-md-start text-center pt-3 pb-3">
             <h2 class="banner-headline fw-bold mb-3">This is just the beginning!</h2>
-            <p class="banner-subtext mb-2">Check out even <a href="#" class="banner-link">more ways to save energy</a> and keep your costs down.</p>
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <p class="banner-subtext me-md-3">Check out even more ways to save energy and keep your costs down.</p>
+            <a href="https://www.delmarva.com/ways-to-save/for-your-home/maryland" class="ready-for-btn mt-3 mb-3 mt-md-0 mb-md-0" target="_blank">Let's Go! <i class="fa-solid fa-arrow-right" style="font-size: 1.5rem; vertical-align: middle;"></i></a>
+            </div>
           </div>
           <div class="banner-img-wrapper position-relative mt-4 mt-md-0">
             <img src="image/zoe-banner.png" alt="Zoe smiling" class="zoe-banner-img position-md-absolute" />
@@ -723,9 +640,43 @@
       </section>
 
       <!-- Footer -->
-      <footer>
+      <footer class="footer-zoe py-5">
         <div class="container">
-          &copy; 2025 Your Company. All rights reserved.
+          <div class="footer-logos d-flex flex-row align-items-center justify-content-between mb-4">
+            <div class="footer-logo-left">
+              <img src="image/dpl_logo.svg" alt="Delmarva Power logo" class="footer-logo-img" />
+            </div>
+            <div class="footer-logo-right d-flex flex-row align-items-center gap-4">
+              <img src="image/empower-maryland.svg" alt="EmPOWER Maryland logo" class="footer-logo-img" />
+              <img src="image/energy-star.png" alt="Energy Star logo" class="footer-logo-img" />
+            </div>
+          </div>
+          <div class="footer-legal text-start small">
+            <div class="footer-disclaimer mb-3 d-flex align-items-center">
+              <span>*Source: <a href="https://energy.gov" target="_blank">energy.gov</a> <span class="ms-3">†Source: </span><a href="https://energystar.gov" target="_blank">energystar.gov</a></span>
+            </div>
+            <div class="footer-empower mb-3">
+              EmPOWER Maryland programs are funded by a charge on your energy bill. EmPOWER programs can help you reduce your energy consumption and save you money. To learn more about EmPOWER and how you can participate, <a href="https://energy.maryland.gov/pages/facts/empower.aspx" target="_blank">click here</a>.
+            </div>
+            <!-- EmPOWER Maryland Detail Accordion -->
+            <div class="accordion footer-accordion mb-3" id="empowerDetailAccordion">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header" id="empowerDetailHeader">
+                  <button class="accordion-button collapsed p-0 bg-transparent shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#empowerDetailCollapse" aria-expanded="false" aria-controls="empowerDetailCollapse">
+                   Legal Details
+                  </button>
+                </h2>
+                <div id="empowerDetailCollapse" class="accordion-collapse collapse" aria-labelledby="empowerDetailHeader" data-bs-parent="#empowerDetailAccordion">
+                  <div class="accordion-body ps-0 pt-2">
+                    The EmPOWER Maryland charge funds programs that can help you reduce your energy consumption and greenhouse gas emissions and save you money. Since the inception of the EmPOWER Maryland program in 2008, the programs have saved $14.5 billion on installed measures at a cost of $4.1 billion. In addition to new program costs, this charge includes paying off the uncollected costs that were accrued over time by programs required by the EmPOWER statute and authorized by the Commission. In accordance with House Bill 864, the uncollected amounts will be fully paid by the end of 2032.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              &copy; Delmarva Power & Light Company, 2025
+            </div>
+          </div>
         </div>
       </footer>
     </div>
@@ -737,7 +688,16 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <!-- ScrollSmoother requires ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+  <!-- Lottie Web Player -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <!-- Placeholder for GSAP Animations -->
   <script src="js/script.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('hide');
+      setTimeout(() => preloader.style.display = 'none', 500);
+    });
+  </script>
 </body>
 </html> 

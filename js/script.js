@@ -116,27 +116,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Dropdown-tab sync for mobile
-  // (Added by AI for mobile tab dropdown)
-  var dropdown = document.getElementById('sectionTabsDropdown');
-  if (!dropdown) return;
-
-  dropdown.addEventListener('change', function () {
-    var tabId = this.value;
-    var tabTrigger = document.querySelector('[data-bs-target="#' + tabId + '"]');
-    if (tabTrigger) {
-      var tab = new bootstrap.Tab(tabTrigger);
-      tab.show();
-    }
-  });
-
-  // Keep dropdown in sync with tab changes (for arrow buttons, etc)
-  var tabButtons = document.querySelectorAll('#sectionTabs button[data-bs-toggle="tab"]');
-  tabButtons.forEach(function (btn) {
-    btn.addEventListener('shown.bs.tab', function (e) {
-      dropdown.value = e.target.getAttribute('data-bs-target').replace('#', '');
+  // --- Custom Dropdown for Mobile Tabs ---
+  var dropdownBtn = document.querySelector('.custom-dropdown-selected');
+  var dropdownMenu = document.querySelector('.custom-dropdown-list');
+  if (dropdownBtn && dropdownMenu) {
+    var btnTextSpan = dropdownBtn.querySelector('.dropdown-btn-text');
+    dropdownMenu.querySelectorAll('.dropdown-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Update button text
+        if (btnTextSpan) btnTextSpan.textContent = this.textContent;
+        // Update active class
+        dropdownMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        // Switch tab
+        var tabId = this.getAttribute('data-tab');
+        var tabTrigger = document.querySelector('[data-bs-target="#' + tabId + '"]');
+        if (tabTrigger) {
+          var tab = new bootstrap.Tab(tabTrigger);
+          tab.show();
+        }
+      });
     });
-  });
+    // Keep dropdown in sync with tab changes (arrows, etc)
+    var tabButtons = document.querySelectorAll('#sectionTabs button[data-bs-toggle="tab"]');
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener('shown.bs.tab', function (e) {
+        var tabId = e.target.getAttribute('data-bs-target').replace('#', '');
+        var activeItem = dropdownMenu.querySelector('.dropdown-item[data-tab="' + tabId + '"]');
+        if (activeItem && btnTextSpan) {
+          btnTextSpan.textContent = activeItem.textContent;
+          dropdownMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+          activeItem.classList.add('active');
+        }
+      });
+    });
+  }
+  // END Custom Dropdown for Mobile Tabs
 
   // Accordion plus/minus icon toggle using Font Awesome
   document.querySelectorAll('.accordion-button').forEach(function(btn) {
@@ -172,6 +188,57 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // --- Dot indicator sync for mobile tab navigation ---
+  const tabIds = ['tab0', 'tab1', 'tab2', 'tab3', 'tab4'];
+  // For each tab-image-wrapper, sync the dots
+  document.querySelectorAll('.tab-image-wrapper').forEach(function(wrapper, tabIdx) {
+    const dotContainer = wrapper.querySelector('.tab-dot-indicators');
+    if (!dotContainer) return;
+    const dots = dotContainer.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Show the corresponding tab
+        const tabTrigger = document.querySelector(`[data-bs-toggle="tab"][data-bs-target="#${tabIds[idx]}"]`);
+        if (tabTrigger) {
+          var tab = new bootstrap.Tab(tabTrigger);
+          tab.show();
+        }
+      });
+    });
+  });
+  // When a tab is shown, update all dot indicators
+  document.querySelectorAll('#sectionTabs button[data-bs-toggle="tab"]').forEach(function(tabBtn, idx) {
+    tabBtn.addEventListener('shown.bs.tab', function(e) {
+      const activeTabId = e.target.getAttribute('data-bs-target');
+      document.querySelectorAll('.tab-dot-indicators').forEach(function(dotContainer) {
+        const dots = dotContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', `#${tabIds[i]}` === activeTabId);
+        });
+      });
+    });
+  });
+
+  // --- Dropdown arrow icon swap on open/close ---
+  var dropdownBtnEl = document.getElementById('roomDropdown');
+  if (dropdownBtnEl) {
+    dropdownBtnEl.addEventListener('show.bs.dropdown', function () {
+      var icon = dropdownBtnEl.querySelector('.tab-dropdown-arrow i');
+      if (icon) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    });
+    dropdownBtnEl.addEventListener('hide.bs.dropdown', function () {
+      var icon = dropdownBtnEl.querySelector('.tab-dropdown-arrow i');
+      if (icon) {
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    });
+  }
 });
 
 // Debounced resize handler to refresh ScrollSmoother and ScrollTrigger
@@ -206,7 +273,7 @@ function animateHeroSection() {
   const animControlBtn = document.getElementById('heroAnimControlBtn');
 
   // Detect mode
-  const desktop = window.matchMedia('(min-width: 991px)').matches;
+  const desktop = window.matchMedia('(min-width: 1025px)').matches;
   const mode = desktop ? 'desktop' : 'mobile';
   if (lastHeroMode === mode) return; // Only animate if mode changes
   lastHeroMode = mode;
@@ -236,33 +303,35 @@ function animateHeroSection() {
     gsap.set(zoeDialogue, {right: '25%', left: 'auto', position: 'absolute', zIndex: 3});
 
     heroTimeline = gsap.timeline();
-    heroTimeline.to(leftImage, {autoAlpha: 1, duration: 0.6, ease: 'power2.out'})
-      .to(leftDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '+=0.2')
+    heroTimeline.to(leftImage, {autoAlpha: 1, duration: 1, ease: 'power2.out'})
+      .to(leftDialogue, {autoAlpha: 1, duration: 1, ease: 'power2.out'}, '+=0.2')
       .to(leftImage, {
         xPercent: 0,
         left: 0,
-        duration: 0.7,
+        duration: 1,
         ease: 'power2.inOut',
         stagger: 0.05
       })
       .to(leftDialogue, {
         xPercent: 0,
         left: '30%',
-        duration: 0.7,
+        duration: 1,
         ease: 'power2.inOut',
         stagger: 0.05
       }, '<')
-      .to(zoeImage, {autoAlpha: 1, x: 60, duration: 0.7, ease: 'power2.out'}, '-=0.3')
-      .to(zoeImage, {x: 0, duration: 0.4, ease: 'power2.inOut'}, '-=0.2')
-      .to(zoeDialogue, {autoAlpha: 1, duration: 0.5, ease: 'power2.out'}, '-=0.2');
+      .to(zoeImage, {autoAlpha: 1, x: 60, duration: 1, ease: 'power2.out'}, '+=0.3')
+      .to(zoeImage, {x: 0, duration: 0.6, ease: 'power2.inOut'}, '-=0.2')
+      .to(zoeDialogue, {autoAlpha: 1, duration: 0.6, ease: 'power2.out'}, '-=0.2');
   } else {
+
+
     // Mobile animation
     if (zoeDialogue) zoeDialogue.src = 'image/zoe-dialogue-mobile.svg';
     gsap.set([leftImage, leftDialogue, zoeImage, zoeDialogue], {autoAlpha: 0});
     gsap.set(leftImage, {xPercent: -50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
     gsap.set(leftDialogue, {xPercent: -50, left: '70%', right: 'auto', position: 'absolute', zIndex: 3});
     gsap.set(zoeImage, {xPercent: 50, left: '50%', right: 'auto', position: 'absolute', zIndex: 2});
-    gsap.set(zoeDialogue, {xPercent: 50, left: 0, right: 'auto', position: 'absolute', zIndex: 3});
+    gsap.set(zoeDialogue, {xPercent: 50, left: '10%', right: 'auto', position: 'absolute', zIndex: 3});
 
     heroTimeline = gsap.timeline({
       onComplete: function() {
@@ -278,25 +347,25 @@ function animateHeroSection() {
       .to([leftImage, leftDialogue], {
         x: '-60vw',
         autoAlpha: 0,
-        duration: 0.7,
+        duration: 1,
         ease: 'power2.inOut',
         stagger: 0.05
-      })
+      }, '+5')
       .to(zoeImage, {
         autoAlpha: 1,
         xPercent: -50,
         x: 0,
-        duration: 0.7,
+        duration: 1,
         left: '60%',
         ease: 'power2.out',
         stagger: 0.1
-      }, '-=0.3')
+      }, '+=0.3')
        .to(zoeDialogue, {
         autoAlpha: 1,
         xPercent: 0,
         x: 0,
-        duration: 0.7,
-        left: '0%',
+        duration: 1,
+        left: '5%',
         ease: 'power2.out',
         stagger: 0.1
       }, '-=0.3');
@@ -331,3 +400,48 @@ animateHeroSection();
 window.addEventListener('resize', () => {
   animateHeroSection();
 });
+
+// === LOTTIE GAUGE POINTER (SCROLL SCRUB, PAUSE ON STOP) ===
+document.addEventListener('DOMContentLoaded', function() {
+  var lottieContainer = document.getElementById('gauge-pointer-lottie');
+  if (lottieContainer && window.lottie) {
+    var lottieAnim = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'js/pointer.json'
+    });
+    lottieAnim.addEventListener('DOMLoaded', function() {
+      var totalFrames = lottieAnim.totalFrames;
+      var lastFrame = 0;
+      var ticking = false;
+      var scrollObj = {progress: 0};
+
+      // GSAP scroll scrub: set frame based on scroll progress
+      gsap.to(scrollObj, {
+        progress: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.first-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          onUpdate: function(self) {
+            // Only update frame if user is actively scrolling
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(function() {
+                var frame = Math.round(scrollObj.progress * (totalFrames - 1));
+                lottieAnim.goToAndStop(frame, true);
+                ticking = false;
+              });
+            }
+          }
+        }
+      });
+    });
+  }
+});
+
+
