@@ -282,24 +282,25 @@ footer {
   padding-bottom: 3rem;
 }
 .tabbed-nav {
-  border: none;
-  margin-bottom: 2rem;
+  border: none !important;
+  margin-bottom: 2rem !important;
   gap: 1rem;
+  border-bottom: 0 !important;
 }
 .tabbed-nav .nav-link {
-  border: none;
-  background: $tab-bg;
-  color: $hero-title;
+  border: none !important;
+  background: $tab-bg !important;
+  color: $hero-title !important;
   font-weight: 500;
   font-size: 1.1rem;
   margin: 0 0.5rem;
-  border-radius: 2rem;
+  border-radius: 2rem !important;
   padding: 0.75rem 2rem;
   transition: background 0.2s, color 0.2s;
 }
 .tabbed-nav .nav-link.active, .tabbed-nav .nav-link:focus {
-  background: $tab-active-bg;
-  color: $tab-active-color;
+  background: $tab-active-bg !important;
+  color: $tab-active-color !important;
 }
 .tab-image-wrapper {
   position: relative;
@@ -319,9 +320,9 @@ footer {
 .tab-arrow {
   bottom: -2.5rem;
   background: $tab-bg;
-  border: 2px solid $tab-bg;
-  color: $tab-subtitle;
-  border-radius: 50%;
+  border: 2px solid $tab-bg !important;
+  color: $tab-subtitle !important;
+  border-radius: 50% !important;
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
@@ -335,8 +336,8 @@ footer {
 }
 
 .tab-arrow:hover, .tab-arrow:focus {
-  background: $tab-arrow-hover-bg;
-  color: $tab-arrow-hover-color;
+  background: $tab-arrow-hover-bg !important;
+  color: $tab-arrow-hover-color !important;
 }
 .tab-content-area {
   padding-left: 2rem;
@@ -583,9 +584,9 @@ footer {
   --bs-accordion-border-color: transparent;
 }
 .accordion-item {
-  background: $accordion-item-bg;
-  border: none;
-  border-bottom: 1px solid $accordion-border;
+  background: $accordion-item-bg !important;
+  border: none !important;
+  border-bottom: 1px solid $accordion-border !important;
   overflow: hidden;
 }
 .accordion-header {
@@ -604,8 +605,8 @@ footer {
    background: $white;
 }
 .accordion-button:not(.collapsed) {
-   color: $accordion-header-color;
-  background: $accordion-active-bg;
+   color: $accordion-header-color !important;
+  background: $accordion-active-bg !important;
 }
 .accordion-button:focus,
 .accordion-button.collapsed:focus {
