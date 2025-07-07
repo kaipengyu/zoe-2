@@ -32,15 +32,74 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 gsap.from("header .container", { duration: 1, y: -50, opacity: 0, ease: "power2.out" });
 
-// Initialize GSAP ScrollSmoother for smooth scrolling using wrapper and content selectors
-if (window.ScrollSmoother) {
-  ScrollSmoother.create({
-    wrapper: '.smooth-wrapper',
-    content: '.smooth-content',
-    smooth: 1.2,
-    effects: true
+// Store original data-speed values
+const originalSpeeds = new Map();
+
+// Function to store original speeds
+function storeOriginalSpeeds() {
+  document.querySelectorAll('[data-speed]').forEach(element => {
+    originalSpeeds.set(element, element.getAttribute('data-speed'));
   });
 }
+
+// Initialize GSAP ScrollSmoother for smooth scrolling using wrapper and content selectors
+function initScrollSmoother(isDesktop) {
+  if (window.ScrollSmoother) {
+    // Kill existing instance if it exists
+    if (ScrollSmoother.get()) {
+      ScrollSmoother.get().kill();
+    }
+
+    // Handle data-speed attributes
+    if (!isDesktop) {
+      document.querySelectorAll('[data-speed]').forEach(element => {
+        element.removeAttribute('data-speed');
+      });
+    }
+
+    // Initialize ScrollSmoother with effects only on desktop
+    ScrollSmoother.create({
+      wrapper: '.smooth-wrapper',
+      content: '.smooth-content',
+      smooth: 1.2,
+      effects: isDesktop // Only enable parallax effects on desktop
+    });
+  }
+}
+
+// Initial setup
+const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+// Store original speeds on page load
+storeOriginalSpeeds();
+initScrollSmoother(isDesktop);
+
+// Also update the resize handler to manage data-speed attributes and ScrollSmoother
+(function() {
+  let resizeTimeout;
+
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+      
+      // Handle data-speed attributes
+      if (isDesktop) {
+        // Restore original speeds on desktop
+        originalSpeeds.forEach((speed, element) => {
+          if (element && document.body.contains(element)) {
+            element.setAttribute('data-speed', speed);
+          }
+        });
+      }
+
+      // Completely reinitialize ScrollSmoother
+      initScrollSmoother(isDesktop);
+      
+      // Force a complete refresh of ScrollTrigger
+      ScrollTrigger.refresh(true);
+    }, 150); // 150ms debounce
+  });
+})();
 
 document.addEventListener('DOMContentLoaded', function () {
   // Listen for clicks on any tab-arrow button
@@ -240,22 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
-// Debounced resize handler to refresh ScrollSmoother and ScrollTrigger
-(function() {
-  let resizeTimeout;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
-      if (window.ScrollSmoother && ScrollSmoother.get()) {
-        ScrollSmoother.get().refresh();
-      }
-      if (window.ScrollTrigger) {
-        ScrollTrigger.refresh();
-      }
-    }, 150); // 150ms debounce
-  });
-})();
 
 // === HERO SECTION ANIMATION (GSAP) ===
 let lastHeroMode = null; // Track last mode: 'desktop' or 'mobile'
