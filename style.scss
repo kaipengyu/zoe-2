@@ -418,7 +418,7 @@ footer {
 }
 .banner-headline {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: $white;
   margin-bottom: 0.5rem;
 }
@@ -455,23 +455,7 @@ footer {
   z-index: 3;
   display: block;
 }
-@media (max-width: 768px) {
-  .custom-banner-section .container {
-    flex-direction: column !important;
-    text-align: center;
-  }
-  .banner-img-wrapper {
-    justify-content: center;
-    margin-top: 2rem;
-  }
-  .zoe-banner-img {
-    margin-top: -40px;
-    max-width: 220px;
-  }
-  .banner-text {
-    max-width: 100%;
-  }
-}
+
 
 .first-section {
   .first-headline {
@@ -692,8 +676,8 @@ footer {
 }
 
   .ready-for-btn {
-    background: $banner-link;
-    color: $hero-title;
+    background: $custom-banner-bg;
+    color: white;
     border-radius: $ready-row-btn-radius;
     border: 0;
     min-width: 200px;
@@ -706,8 +690,8 @@ footer {
     text-decoration: none;
     transition: background 0.2s, color 0.2s;
     &:hover, &:focus {
-      background: $ready-row-btn-hover-bg;
-      color: $white;
+      background: $banner-link;
+      color: $dark-bg;
       text-decoration: none;
     }
   }
@@ -1087,4 +1071,30 @@ footer {
 #preloader.hide {
   opacity: 0;
   pointer-events: none;
+}
+
+
+.see-for-yourself-link{
+  color: $banner-link;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  span{
+    text-decoration: underline;
+  }
+}
+.see-for-yourself-icon{
+font-size: 1.5rem; 
+vertical-align: middle !important;
+}
+@media (max-width: 768px) {
+.banner-headline{
+  font-size: 1rem;
+}
+.see-for-yourself-link{
+  font-size: 1rem !important;
+}
+.see-for-yourself-icon{
+  font-size: 1rem !important;
+}
 }
