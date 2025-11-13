@@ -1,0 +1,1092 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Regular.woff2') format('woff2'),
+       url('./fonts/Diodrum-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-RegularItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Bold.woff2') format('woff2'),
+       url('./fonts/Diodrum-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-BoldItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-Semibold.woff2') format('woff2'),
+       url('./fonts/Diodrum-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Diodrum';
+  src: url('./fonts/Diodrum-SemiboldItalic.woff2') format('woff2'),
+       url('./fonts/Diodrum-SemiboldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+// TODO: Import Diodrum font here if available as web font
+
+// Color Variables
+$primary-blue: #0d6efd;
+$white: #fff;
+$dark-bg: #222;
+$hero-bg: #E4E1F0;
+$hero-title: #170D67;
+$hero-subtitle: #6E06C1;
+$tab-bg: #f5f5fa;
+$tab-active-bg: #2e1a85;
+$tab-active-color: #fff;
+$tab-arrow-border: #2e1a85;
+$tab-arrow-color: #2e1a85;
+$tab-arrow-hover-bg: #2e1a85;
+$tab-arrow-hover-color: #fff;
+$tab-title: #2e1a85;
+$tab-subtitle: #585858;
+$custom-banner-bg: #7301b6;
+$banner-link: #00e6c0;
+$banner-link-hover: #00bfa3;
+$accordion-active-bg: #ede9f7;
+
+// Ready for more ideas row
+$ready-row-bg: $tab-bg;
+$ready-row-radius: 1.5rem;
+$ready-row-gap: 1.5rem;
+$ready-row-padding: 1.5rem;
+$ready-row-text-color: $custom-banner-bg;
+$ready-row-btn-bg: $custom-banner-bg;
+$ready-row-btn-radius: 2rem;
+$ready-row-btn-hover-bg: darken($custom-banner-bg, 20%);
+
+// Add/ensure these at the top with other color variables
+$accordion-item-bg: $tab-bg;
+$accordion-item-shadow: rgba(23, 13, 103, 0.04);
+$accordion-header-color: $tab-title;
+$accordion-border: #e0d7f3;
+$accordion-icon-color: $custom-banner-bg;
+$accordion-body-color: $tab-subtitle;
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.first-headline,
+.banner-headline {
+  font-family: 'Diodrum', Arial, sans-serif;
+}
+.smooth-content {
+  overflow: hidden !important;
+}
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  background: #F4EBFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-size: 2rem;
+  z-index: 1;
+
+  @media (max-width: 1025px) {
+    min-height: 400px;
+  }
+}
+.banner-section {
+  background: $primary-blue;
+  color: $white;
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+footer {
+  background: $dark-bg;
+  color: $white;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.bg-white {
+  background-color: $white;
+  position: relative;
+  z-index: 2;
+}
+
+// hero section
+
+.hero-section {
+  background-color: $hero-bg;
+  z-index: 3;
+  min-height: 0;
+  height: 100vh;
+  position: relative;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.hero-logo {
+  top: 32px;
+  left: 48px;
+  width: 180px;
+  z-index: 10;
+}
+.hero-people {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45%;
+  max-width:45%;
+  min-width: 260px;
+  z-index: 2;
+
+   @media (max-width:1025px) {
+    width: 100%;
+    max-width: 100%;
+    max-width: 700px;
+  }
+}
+.hero-bubble-left {
+  position: absolute;
+  left: 55%;
+  bottom: 60%;
+  width: 25%;
+  min-width: 220px;
+  max-width: 300px;
+  z-index: 3;
+
+  @media (max-height: 800px) {
+    bottom: 70%;
+    width: 22%;
+  }
+
+  @media (max-height: 600px) {
+    top: 2%;
+    width: 20%;
+    min-width: 180px;
+  }
+  @media (max-width:1025px) {
+      bottom: 55%;
+      width: 30%;
+  }
+
+}
+.hero-zoe {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 32%;
+  max-width: 35%;
+  min-width: 200px;
+  z-index: 2;
+
+    @media (max-width:1025px) {
+    width: 50%;
+    max-width: 60%;
+    max-width: 550px;
+  }
+    @media (max-width:600px) {
+    width: 80%;
+    max-width: 80%;
+    max-width: 450px;
+  }
+}
+.hero-bubble-right {
+  position: absolute;
+  right: 25%;
+  bottom: 30%;
+  width: 28%;
+  min-width: 220px;
+  max-width: 28%;
+  z-index: 3;
+
+   @media (max-width:1025px) {
+   bottom: 55%;
+   width: 40%;
+   max-width: 40%;
+  }
+
+    @media (max-width:600px) {
+    bottom: 60%;
+    width: 45%;
+    max-width: 45%;
+  }
+
+
+}
+.hero-content {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.hero-desktop-img {
+  width: 130%;
+  height: auto;
+  max-height: 100vh;
+  max-width: 1600px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.hero-mobile-img {
+  width: 100%;
+  height: 100%;
+  max-height: 800px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+.hero-title {
+  font-size: 60px;
+  font-weight: 400;
+  color: $hero-title;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  text-align: left;
+}
+.hero-subtitle {
+  font-size: 25px;
+  font-weight: 600;
+  color: $hero-subtitle;
+  line-height: 1.4em;
+  text-align: left;
+}
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(23, 13, 103, 0.08);
+}
+.hero-bottom-row {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.tabbed-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.tabbed-nav {
+  border: none !important;
+  margin-bottom: 2rem !important;
+  gap: 1rem;
+  border-bottom: 0 !important;
+}
+.tabbed-nav .nav-link {
+  border: none !important;
+  background: $tab-bg !important;
+  color: $hero-title !important;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0.5rem;
+  border-radius: 2rem !important;
+  padding: 0.75rem 2rem;
+  transition: background 0.2s, color 0.2s;
+}
+.tabbed-nav .nav-link.active, .tabbed-nav .nav-link:focus {
+  background: $tab-active-bg !important;
+  color: $tab-active-color !important;
+}
+.tab-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.tab-image {
+  width: 100%;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(23, 13, 103, 0.08);
+}
+.tab-arrow {
+  bottom: -2.5rem;
+  background: $tab-bg;
+  border: 2px solid $tab-bg !important;
+  color: $tab-subtitle !important;
+  border-radius: 50% !important;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  z-index: 2;
+  margin: 0 !important;
+}
+
+.tab-arrow:hover, .tab-arrow:focus {
+  background: $tab-arrow-hover-bg !important;
+  color: $tab-arrow-hover-color !important;
+}
+.tab-content-area {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.tab-title {
+  color: $tab-title;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.tab-subtitle {
+  color: $tab-subtitle;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.tab-image-wrapper > .d-flex.mt-3 {
+  margin-top: 3.5rem !important;
+  justify-content: center !important;
+  gap: 0.2rem !important;
+}
+@media (max-width: 1024.98px) {
+  .tabbed-section-inner {
+    flex-direction: column;
+  }
+  .tab-content-area {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 2rem;
+  }
+  .tab-image-wrapper {
+    max-width: 90vw;
+    min-height: 180px;
+  }
+}
+@media (max-width: 575.98px) {
+  .tabbed-nav .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.custom-banner-section {
+  background: $custom-banner-bg;
+  color: $white;
+  position: relative;
+  overflow: visible;
+  z-index: 2;
+}
+.custom-banner-section .container {
+  position: relative;
+  z-index: 2;
+}
+.banner-text {
+  max-width: 800px;
+}
+.banner-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $white;
+  margin-bottom: 0.5rem;
+}
+.banner-subtext {
+  font-size: 1rem;
+  color: $white;
+  margin-bottom: 0;
+}
+.banner-link {
+  color: $banner-link;
+  text-decoration: underline;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+.banner-link:hover, .banner-link:focus {
+  color: $banner-link-hover;
+  text-decoration: underline;
+}
+.banner-img-wrapper {
+  min-width: 220px;
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: relative;
+}
+.zoe-banner-img {
+  width: 100%;
+  max-width: 340px;
+  min-width: 220px;
+  margin-top: -60px;
+  margin-bottom: 0;
+  z-index: 3;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .custom-banner-section .container {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .banner-img-wrapper {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .zoe-banner-img {
+    margin-top: -40px;
+    max-width: 220px;
+  }
+  .banner-text {
+    max-width: 100%;
+  }
+}
+
+
+.first-section {
+  .first-headline {
+    color: $hero-title;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+    @media (max-width: 600px) {
+      font-size: 2rem;
+    }
+  }
+  .first-subheadline {
+    color: #757575;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+  .first-highlight {
+    color: $hero-subtitle;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  .first-section-img {
+    max-width: 220px;
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+// === Circle Image with Overlay Circles ===
+.circle-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.main-circle {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+  .small-circle {
+    pointer-events: auto;
+    border-radius: 50%;
+  }
+}
+
+.small-circle-1 {
+  width: 60px;
+  height: 60px;
+  background: #00e6c0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: rotate(0deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(0deg);
+}
+.small-circle-2 {
+  width: 40px;
+  height: 40px;
+  background: #2e1a85;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: rotate(120deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(-120deg);
+}
+.small-circle-3 {
+  width: 110px;
+  height: 110px;
+  background: #7301b6;
+  position: absolute;
+  left: 80%;
+  top: 40%;
+  transform: rotate(240deg) translateY(-170px) translateX(-50%) translateY(-50%) rotate(-240deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7301b6;
+    font-size: 2rem;
+
+    img {
+      width: 50px;
+      height: 50px;
+      display: block;
+    }
+  }
+}
+
+.tab-arrow-container{
+  display: flex;
+  gap: 1rem;
+}
+
+// === Custom Accordion Styles ===
+.accordion {
+  background: transparent;
+  border: none;
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: transparent;
+}
+.accordion-item {
+  background: $accordion-item-bg !important;
+  border: none !important;
+  border-bottom: 1px solid $accordion-border !important;
+  overflow: hidden;
+}
+.accordion-header {
+  margin-bottom: 0;
+}
+.accordion-button {
+  color:$dark-bg;
+  font-weight: 600;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+   background: $white;
+}
+.accordion-button:not(.collapsed) {
+   color: $accordion-header-color !important;
+  background: $accordion-active-bg !important;
+}
+.accordion-button:focus,
+.accordion-button.collapsed:focus {
+  background: $custom-banner-bg !important;
+  color: $white !important;
+  outline: none !important;
+  box-shadow: none !important;
+  z-index: 2;
+}
+.accordion-button:focus .accordion-icon,
+.accordion-button.collapsed:focus .accordion-icon {
+  color: $white !important;
+}
+// Remove custom plus/minus icon
+.accordion-button::after {
+  display: none !important;
+}
+
+// Style for Font Awesome plus/minus icon in accordion
+.accordion-button .accordion-icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: $accordion-header-color;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.accordion-body {
+  background: $white;
+  color: $accordion-body-color;
+  font-size: 1rem;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  border-top: 1px solid $accordion-border;
+
+  a{
+    color: $tab-active-bg;
+  }
+}
+
+.ready-for-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $ready-row-gap;
+  margin-top: $ready-row-gap;
+  padding: $ready-row-padding;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+  .ready-for-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $ready-row-text-color;
+  }
+
+}
+
+  .ready-for-btn {
+    background: $banner-link;
+    color: $hero-title;
+    border-radius: $ready-row-btn-radius;
+    border: 0;
+    min-width: 200px;
+    padding: 0.75rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    &:hover, &:focus {
+      background: $ready-row-btn-hover-bg;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  .ready-for-btn.small {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.8);
+    color: $ready-row-btn-bg;
+    font-weight: 500;
+    &:hover, &:focus {
+      background: $ready-row-btn-bg;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+// Wrapper for positioning Font Awesome icon in dropdown
+.tab-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.tab-dropdown {
+  background: $tab-bg;
+  border: 2px solid $custom-banner-bg;
+  border-radius: 2rem;
+  color: $tab-title;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(115, 1, 182, 0.07);
+  appearance: none;
+  /* Remove SVG background */
+  background-image: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
+
+  &:focus {
+    border-color: $banner-link;
+    outline: none;
+    box-shadow: 0 0 0 2px $banner-link;
+  }
+}
+
+.tab-dropdown-arrow {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: $custom-banner-bg;
+  font-size: 1.3rem;
+  z-index: 3;
+}
+
+@media (min-width: 1024px) {
+  .tab-dropdown-wrapper {
+    display: none !important;
+  }
+}
+
+// Hero Animation Control Button: Only show on mobile
+#heroAnimControlBtn {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+@media (min-width: 992px) {
+  #heroAnimControlBtn {
+    display: none !important;
+  }
+}
+
+.parallax-img {
+  position: absolute;
+  left: 50%;
+  bottom: -40%;
+  top: auto;
+  width: 100%;
+  min-width: 700px;
+  max-width: 1000px;
+  transform: translateX(-50%);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 1;
+  @media (max-width: 1025px) {
+    bottom: 0%;
+  }
+}
+
+// Add styles for parallax-img-2
+.parallax-img-2 {
+  position: absolute;
+  right: 0%;
+  top: 10%;
+  width: 20%;
+  min-width: 300px;
+  max-width: 400px;
+  transform: translateX(-50%);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 2;
+
+  @media (max-width: 1200px) {
+    right: -20%;
+    top: 10%;
+    width: 35%;
+    max-width: 250px;
+    min-width: 150px;
+  }
+
+}
+
+.tab-subtitle-small{
+  color:$hero-subtitle;
+  font-size: 1.25rem;
+  padding-top: 2rem;
+}
+.tab-title{
+  font-weight: 400;
+  font-size: 3rem;
+  color: $hero-title;
+}
+
+
+/* Tab Dot Indicators for Mobile */
+.tab-dot-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+}
+.tab-dot-indicators .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid $tab-subtitle;
+  background: white;
+  display: inline-block;
+  transition: background 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.tab-dot-indicators .dot.active {
+  background: $tab-active-bg;
+  border-color: $tab-active-bg;
+}
+
+@media (min-width: 768px) {
+  .tab-dot-indicators { display: none !important; }
+}
+.custom-dropdown {
+  margin-bottom: 2rem;
+}
+.custom-dropdown .dropdown-toggle {
+  border-radius: 1rem;
+  background: #fff;
+  color: $hero-title;
+  font-weight: 400;
+  border: 1px solid $hero-title;
+  font-family: 'Diodrum', Arial, sans-serif;
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+.custom-dropdown .dropdown-toggle:after {
+  display: none;
+}
+.custom-dropdown-list {
+  border-radius: 1rem;
+  min-width: 220px;
+  border: 1px solid #2e1a85;
+  margin-top: 0.25rem;
+  padding: 1rem 0;
+  background: rgba(255, 255, 255, 0.9);
+}
+.custom-dropdown-list .dropdown-item {
+  color: #2e1a85;
+  font-family: 'Diodrum', Arial, sans-serif;
+  font-weight: 400;
+  padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.custom-dropdown-list .dropdown-item.active,
+.custom-dropdown-list .dropdown-item:active,
+.custom-dropdown-list .dropdown-item:focus {
+  color: #7301b6;
+  font-weight: 500;
+  background: #f5f5fa;
+  border-left: 6px solid #7301b6;
+}
+.custom-dropdown-list .dropdown-item:hover {
+  background: #ede9f7;
+  color: #7301b6;
+}
+.custom-dropdown .tab-dropdown-arrow {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #7301b6;
+  font-size: 1.3rem;
+  z-index: 3;
+}
+@media (min-width: 1024px) {
+  .custom-dropdown {
+    display: none !important;
+  }
+}
+
+.dropdown.custom-dropdown.show .tab-dropdown-arrow i {
+  transform: rotate(180deg) !important;
+  transition: transform 0.2s;
+}
+.dropdown.custom-dropdown .tab-dropdown-arrow i {
+  transition: transform 0.2s;
+}
+
+// === Footer Styles ===
+.footer-zoe {
+  background: #EDEDED; // Consider adding a variable if reused
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  .footer-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 0;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+  }
+  .footer-logo-left {
+    display: flex;
+    align-items: center;
+    img {
+      height: 64px;
+      width: auto;
+    }
+  }
+  .footer-logo-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    img.footer-logo-img {
+      &.footer-logo-img[src*="empower-maryland"] {
+        height: 40px;
+      }
+      &.footer-logo-img[src*="energy-star"] {
+        height: 64px;
+      }
+    }
+  }
+  .footer-legal {
+    color: $tab-subtitle;
+    text-align: left;
+    font-size: 0.8rem;
+    margin: 0;
+    a{
+      color: $tab-subtitle;
+    }
+   
+    .footer-disclaimer,
+    .footer-empower,
+    .footer-empower-detail {
+      margin-bottom: 1.25rem;
+      
+    }
+    .footer-disclaimer {
+      font-size: 0.8rem;
+      a{
+        color: $tab-subtitle;
+      }
+    }
+    .footer-copyright {
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+// Footer Accordion Styles
+.footer-accordion {
+  .accordion-item{
+    background: none !important;
+    border: none !important;
+
+    &:hover{
+      background: none !important;
+    }
+  }
+  .accordion-button .accordion-icon{
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    margin-left: 0.5rem !important;
+    transform: none !important;
+    font-size: 0.8rem !important;
+  }
+  .accordion-button:focus, .accordion-button.collapsed:focus{
+    color: $tab-subtitle !important;
+  }
+  .accordion-button:focus .accordion-icon, .accordion-button.collapsed:focus .accordion-icon{
+    color: $tab-subtitle !important;
+  }
+  .accordion-button {
+    font-size: 13px;
+    color: $tab-subtitle;
+    padding-right: 0;
+    background: none !important;
+
+    &:hover,
+    &:focus{
+      background: none !important;
+      color: $tab-subtitle;
+    }
+
+    
+    
+    &::after {
+      position: relative;
+      margin-left: 0.1rem;
+      margin-right: auto;
+      width: 0.8rem;
+      height: 0.8rem;
+      background-size: 0.8rem;
+      order: 0;
+    }
+    
+    &:hover, &:focus {
+      color: darken($tab-subtitle, 20%);
+    }
+  }
+  
+  .accordion-body {
+    font-size: 0.8rem;
+    color: $tab-subtitle;
+    background: transparent;
+    border: none;
+  }
+}
+
+// Preloader styles
+#preloader {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+#preloader .spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #eee;
+  border-top: 6px solid #7301b6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+#preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
