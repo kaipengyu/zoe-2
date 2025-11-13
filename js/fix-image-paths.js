@@ -14,49 +14,111 @@
   'use strict';
 
   /**
-   * Detect which company page this is based on logo images
+   * Detect which company page this is based on logo images or URL
    * @returns {string} CSS filename suffix (ACE, PEPCO, or DPL)
    */
   function detectCompany() {
-    const images = document.querySelectorAll('img[src]');
-    for (let i = 0; i < images.length; i++) {
-      const src = images[i].getAttribute('src');
-      if (src) {
-        if (src.includes('ace-logo.svg')) {
-          return 'ACE';
-        } else if (src.includes('pepco_logo.png')) {
-          return 'PEPCO';
-        } else if (src.includes('dpl_logo.svg')) {
-          return 'DPL';
-        }
-      }
-    }
-    // Fallback: check window location pathname
+    // First, check URL pathname (most reliable, works immediately)
     const pathname = window.location.pathname.toLowerCase();
-    if (pathname.includes('ace') || pathname.includes('atlantic')) {
+    const href = window.location.href.toLowerCase();
+    
+    if (pathname.includes('ace') || pathname.includes('atlantic') || href.includes('ace')) {
       return 'ACE';
-    } else if (pathname.includes('pepco')) {
+    } else if (pathname.includes('pepco') || href.includes('pepco')) {
       return 'PEPCO';
-    } else if (pathname.includes('delmarva') || pathname.includes('dpl')) {
+    } else if (pathname.includes('delmarva') || pathname.includes('dpl') || href.includes('delmarva') || href.includes('dpl')) {
       return 'DPL';
     }
+    
+    // Fallback: check HTML content for company names
+    if (document.body) {
+      const bodyText = document.body.innerText.toLowerCase();
+      if (bodyText.includes('atlantic city electric') || bodyText.includes('ace')) {
+        return 'ACE';
+      } else if (bodyText.includes('pepco') && !bodyText.includes('delmarva')) {
+        return 'PEPCO';
+      } else if (bodyText.includes('delmarva') || bodyText.includes('dpl')) {
+        return 'DPL';
+      }
+    }
+    
+    // Last resort: check image src attributes
+    const images = document.querySelectorAll('img[src]');
+    for (let i = 0; i < images.length; i++) {
+      const src = images[i].getAttribute('src') || '';
+      if (src.includes('ace-logo.svg') || src.includes('ace-logo')) {
+        return 'ACE';
+      } else if (src.includes('pepco_logo.png') || src.includes('pepco_logo')) {
+        return 'PEPCO';
+      } else if (src.includes('dpl_logo.svg') || src.includes('dpl_logo')) {
+        return 'DPL';
+      }
+    }
+    
     return null;
+  }
+
+  /**
+   * Get base path for relative URLs
+   * Handles both root-level and subdirectory deployments
+   */
+  function getBasePath() {
+    const pathname = window.location.pathname;
+    // Remove filename and get directory depth
+    const pathParts = pathname.split('/').filter(function(part) {
+      return part && !part.includes('.html') && !part.includes('.htm');
+    });
+    
+    // If we're in a subdirectory, calculate relative path to root
+    // For /2025/zoe-twig/file.html, we need ../../ to reach root
+    if (pathParts.length > 0) {
+      return '../'.repeat(pathParts.length);
+    }
+    
+    // Root level - use absolute path
+    return '/';
   }
 
   /**
    * Inject CSS link dynamically based on detected company
    */
   function fixCSSPaths() {
-    const company = detectCompany();
-    if (!company) {
-      return; // Can't determine company, skip CSS injection
-    }
-
-    const cssFile = `/css/style-${company}.css`;
     const head = document.head || document.getElementsByTagName('head')[0];
+    if (!head) {
+      return; // No head element available yet
+    }
     
-    // Check if the CSS link already exists to avoid duplicates
-    const existingLink = document.querySelector(`link[href="${cssFile}"]`);
+    // Check if any company-specific CSS already exists
+    const existingCompanyCSS = document.querySelector('link[href*="style-"]');
+    if (existingCompanyCSS) {
+      return; // Already has company CSS
+    }
+    
+    const company = detectCompany();
+    let cssFile;
+    const basePath = getBasePath();
+    
+    if (company) {
+      // Try absolute path first, fallback to relative
+      cssFile = basePath === '/' ? `/css/style-${company}.css` : `${basePath}css/style-${company}.css`;
+    } else {
+      // Fallback: try to determine from URL or use default
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname.includes('ace') || pathname.includes('atlantic')) {
+        cssFile = basePath === '/' ? '/css/style-ACE.css' : `${basePath}css/style-ACE.css`;
+      } else if (pathname.includes('pepco')) {
+        cssFile = basePath === '/' ? '/css/style-PEPCO.css' : `${basePath}css/style-PEPCO.css`;
+      } else if (pathname.includes('delmarva') || pathname.includes('dpl')) {
+        cssFile = basePath === '/' ? '/css/style-DPL.css' : `${basePath}css/style-DPL.css`;
+      } else {
+        // Last resort: try ACE as default
+        cssFile = basePath === '/' ? '/css/style-ACE.css' : `${basePath}css/style-ACE.css`;
+      }
+    }
+    
+    // Check if this specific CSS link already exists
+    const existingLink = document.querySelector(`link[href="${cssFile}"]`) || 
+                        document.querySelector(`link[href*="style-${company || 'ACE'}.css"]`);
     if (existingLink) {
       return; // Already exists, no need to add again
     }
@@ -66,9 +128,15 @@
     link.rel = 'stylesheet';
     link.href = cssFile;
     link.type = 'text/css';
+    link.setAttribute('data-injected', 'true');
     
-    // Add it to the head
-    head.appendChild(link);
+    // Insert early in head for faster loading
+    const firstStylesheet = head.querySelector('link[rel="stylesheet"]');
+    if (firstStylesheet) {
+      head.insertBefore(link, firstStylesheet);
+    } else {
+      head.appendChild(link);
+    }
   }
 
   /**
@@ -83,27 +151,46 @@
       const script = scripts[i];
       const src = script.getAttribute('src');
       
-      if (src && src.includes('/themes/custom/icfbarrio/zoe/js/')) {
-        const newSrc = src.replace('/themes/custom/icfbarrio/zoe/js/', '/js/');
+      if (src) {
+        let newSrc = src;
+        
+        // Fix Drupal theme paths first
+        if (src.includes('/themes/custom/icfbarrio/zoe/js/')) {
+          newSrc = src.replace('/themes/custom/icfbarrio/zoe/js/', '/js/');
+        }
+        
+        // Convert absolute paths to relative for S3 subdirectory deployments
+        newSrc = convertAbsoluteToRelative(newSrc);
         
         // Only fix if not already fixed to avoid infinite loops
-        if (!script.hasAttribute('data-path-fixed')) {
-          // If script hasn't loaded yet, update src
-          // If it has loaded with wrong path, we need to reload it
-          const currentSrc = script.src || script.getAttribute('src');
+        if (!script.hasAttribute('data-path-fixed') && newSrc !== src) {
+          script.setAttribute('src', newSrc);
+          script.setAttribute('data-path-fixed', 'true');
           
-          if (currentSrc && currentSrc.includes('/themes/custom/icfbarrio/zoe/js/')) {
-            script.setAttribute('src', newSrc);
-            script.setAttribute('data-path-fixed', 'true');
-            
-            // Force reload if script already attempted to load
-            if (script.src && script.src !== newSrc) {
-              script.src = newSrc;
-            }
+          // Force update if script already attempted to load
+          if (script.src && script.src !== newSrc) {
+            script.src = newSrc;
           }
         }
       }
     }
+  }
+
+  /**
+   * Convert absolute paths to relative paths for S3 subdirectory deployments
+   */
+  function convertAbsoluteToRelative(absolutePath) {
+    if (!absolutePath || !absolutePath.startsWith('/')) {
+      return absolutePath; // Already relative or external URL
+    }
+    
+    const basePath = getBasePath();
+    if (basePath === '/') {
+      return absolutePath; // Root level, keep absolute
+    }
+    
+    // Convert /image/file.webp to ../../image/file.webp
+    return basePath + absolutePath.substring(1);
   }
 
   /**
@@ -114,9 +201,20 @@
     const images = document.querySelectorAll('img[src]');
     images.forEach(function(img) {
       const src = img.getAttribute('src');
-      if (src && src.includes('/themes/custom/icfbarrio/zoe/image/')) {
-        const newSrc = src.replace('/themes/custom/icfbarrio/zoe/image/', '/image/');
-        img.setAttribute('src', newSrc);
+      if (src) {
+        let newSrc = src;
+        
+        // Fix Drupal theme paths first
+        if (src.includes('/themes/custom/icfbarrio/zoe/image/')) {
+          newSrc = src.replace('/themes/custom/icfbarrio/zoe/image/', '/image/');
+        }
+        
+        // Convert absolute paths to relative for S3
+        newSrc = convertAbsoluteToRelative(newSrc);
+        
+        if (newSrc !== src) {
+          img.setAttribute('src', newSrc);
+        }
       }
     });
 
@@ -209,10 +307,13 @@
     // If no script.js found or it failed to load, inject it
     if (!scriptJSFound || needsInjection) {
       // Check if we already injected it
-      const existingInjected = document.querySelector('script[src="/js/script.js"][data-injected="true"]');
+      const basePath = getBasePath();
+      const scriptPath = basePath === '/' ? '/js/script.js' : basePath + 'js/script.js';
+      const existingInjected = document.querySelector('script[src="' + scriptPath + '"][data-injected="true"]') ||
+                               document.querySelector('script[src*="script.js"][data-injected="true"]');
       if (!existingInjected) {
         const script = document.createElement('script');
-        script.src = '/js/script.js';
+        script.src = scriptPath;
         script.type = 'text/javascript';
         script.setAttribute('data-injected', 'true');
         // Insert before closing body tag or append to body
